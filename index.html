@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kai-denrei</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+    background: #0a0a0f;
+    color: #c8c8d0;
+    min-height: 100vh;
+    padding: 3rem 1.5rem;
+  }
+
+  header {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #e0e0e8;
+    letter-spacing: 0.08em;
+  }
+
+  header p {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .grid {
+    max-width: 720px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    background: #12121a;
+    border: 1px solid #1e1e2a;
+    border-radius: 6px;
+    padding: 1.2rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .card:hover {
+    border-color: #3a3a50;
+    background: #16161f;
+  }
+
+  .card h2 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e0e0e8;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 0.78rem;
+    color: #888;
+    line-height: 1.45;
+  }
+
+  .card .tag {
+    margin-top: auto;
+    font-size: 0.68rem;
+    color: #555;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>kai-denrei</h1>
+  <p>projects</p>
+</header>
+
+<div class="grid">
+
+  <a class="card" href="https://kai-denrei.github.io/GamblerRuin/">
+    <h2>Gambler's Ruin</h2>
+    <p>Dubins-Savage theorem -- bold play vs timid play with Monte Carlo simulations</p>
+    <span class="tag">probability</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/GamblerRuin/catan.html">
+    <h2>Catan Probabilities</h2>
+    <p>Dice distributions, gambler's fallacy, and dev card odds -- bilingual EN/JP</p>
+    <span class="tag">probability / games</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/braille-lab/">
+    <h2>Braille Lab</h2>
+    <p>Minimalist visualizations using Unicode Braille characters -- animations, pixel editor, faces</p>
+    <span class="tag">visualization</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/jp-fsa-exchanges/">
+    <h2>JP FSA Exchanges</h2>
+    <p>Interactive explorer of FSA-registered cryptocurrency exchanges in Japan</p>
+    <span class="tag">finance / data</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/gh-japanese-martial-arts/">
+    <h2>Japanese Martial Arts</h2>
+    <p>Historical timeline from 712 CE to modern era -- primary sources, lexicon, scholarly analysis</p>
+    <span class="tag">history / martial arts</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/fiore-delli-liberi/">
+    <h2>Fiore dei Liberi</h2>
+    <p>Fior di Battaglia -- interactive manuscript reader with multi-source translations and lexicon</p>
+    <span class="tag">history / manuscripts</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/gh-ancient-greece/">
+    <h2>Ancient Greek Grappling</h2>
+    <p>Pale and pankration through primary sources -- 708 BCE to 500 CE</p>
+    <span class="tag">history / martial arts</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/SardinesFast/">
+    <h2>Sardines Fast</h2>
+    <p>5-day sardine fasting-mimicking diet tracker with daily logging and wellness metrics</p>
+    <span class="tag">health / tracking</span>
+  </a>
+
+  <a class="card" href="https://www.grapplingprimitives.com/modules/breathing/">
+    <h2>Breathing Text</h2>
+    <p>Canvas-rendered text that breathes -- characters scale and fade on a respiratory cycle</p>
+    <span class="tag">experiment / pretext</span>
+  </a>
+
+  <a class="card" href="https://kai-denrei.github.io/textstring/">
+    <h2>Text String</h2>
+    <p>Physics-based chain simulation -- characters as beads on a string with gravity, drag, and collisions</p>
+    <span class="tag">experiment / pretext</span>
+  </a>
+
+  <a class="card" href="https://www.grapplingprimitives.com">
+    <h2>Grappling Primitives</h2>
+    <p>Articles, tools, and interactive modules for grappling arts -- concepts, training, analysis</p>
+    <span class="tag">martial arts / tools</span>
+  </a>
+
+</div>
+
+</body>
+</html>
