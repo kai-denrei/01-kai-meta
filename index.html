@@ -53,6 +53,7 @@
     flex-direction: column;
     gap: 0.5rem;
     transition: border-color 0.2s, background 0.2s;
+    position: relative;
   }
 
   .card:hover {
@@ -79,6 +80,26 @@
     color: #555;
     letter-spacing: 0.04em;
   }
+
+  .deep-link {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    font-size: 0.62rem;
+    font-weight: 500;
+    padding: 2px 6px;
+    background: none;
+    border: 1px solid #2a2a3a;
+    border-radius: 3px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    line-height: 1.4;
+  }
+
+  .deep-link:hover { color: #aaa; border-color: #4a4a5a; }
+  .deep-link.copied { color: #8b9dc3; border-color: #8b9dc3; }
 </style>
 </head>
 <body>
@@ -90,73 +111,121 @@
 
 <div class="grid">
 
-  <a class="card" href="https://kai-denrei.github.io/GamblerRuin/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/GamblerRuin/">link</span>
+    <a href="https://kai-denrei.github.io/GamblerRuin/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Gambler's Ruin</h2>
     <p>Dubins-Savage theorem -- bold play vs timid play with Monte Carlo simulations</p>
     <span class="tag">probability</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/GamblerRuin/catan.html">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/GamblerRuin/catan.html">link</span>
+    <a href="https://kai-denrei.github.io/GamblerRuin/catan.html" style="text-decoration:none;color:inherit;display:contents">
     <h2>Catan Probabilities</h2>
     <p>Dice distributions, gambler's fallacy, and dev card odds -- bilingual EN/JP</p>
     <span class="tag">probability / games</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/braille-lab/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/braille-lab/">link</span>
+    <a href="https://kai-denrei.github.io/braille-lab/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Braille Lab</h2>
     <p>Minimalist visualizations using Unicode Braille characters -- animations, pixel editor, faces</p>
     <span class="tag">visualization</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/jp-fsa-exchanges/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/jp-fsa-exchanges/">link</span>
+    <a href="https://kai-denrei.github.io/jp-fsa-exchanges/" style="text-decoration:none;color:inherit;display:contents">
     <h2>JP FSA Exchanges</h2>
     <p>Interactive explorer of FSA-registered cryptocurrency exchanges in Japan</p>
     <span class="tag">finance / data</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/gh-japanese-martial-arts/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/gh-japanese-martial-arts/">link</span>
+    <a href="https://kai-denrei.github.io/gh-japanese-martial-arts/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Japanese Martial Arts</h2>
     <p>Historical timeline from 712 CE to modern era -- primary sources, lexicon, scholarly analysis</p>
     <span class="tag">history / martial arts</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/fiore-delli-liberi/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/fiore-delli-liberi/">link</span>
+    <a href="https://kai-denrei.github.io/fiore-delli-liberi/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Fiore dei Liberi</h2>
     <p>Fior di Battaglia -- interactive manuscript reader with multi-source translations and lexicon</p>
     <span class="tag">history / manuscripts</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/gh-ancient-greece/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/gh-ancient-greece/">link</span>
+    <a href="https://kai-denrei.github.io/gh-ancient-greece/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Ancient Greek Grappling</h2>
     <p>Pale and pankration through primary sources -- 708 BCE to 500 CE</p>
     <span class="tag">history / martial arts</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/SardinesFast/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/SardinesFast/">link</span>
+    <a href="https://kai-denrei.github.io/SardinesFast/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Sardines Fast</h2>
     <p>5-day sardine fasting-mimicking diet tracker with daily logging and wellness metrics</p>
     <span class="tag">health / tracking</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://www.grapplingprimitives.com/modules/breathing/">
+  <div class="card">
+    <span class="deep-link" data-url="https://www.grapplingprimitives.com/modules/breathing/">link</span>
+    <a href="https://www.grapplingprimitives.com/modules/breathing/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Breathing Text</h2>
     <p>Canvas-rendered text that breathes -- characters scale and fade on a respiratory cycle</p>
     <span class="tag">experiment / pretext</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://kai-denrei.github.io/textstring/">
+  <div class="card">
+    <span class="deep-link" data-url="https://kai-denrei.github.io/textstring/">link</span>
+    <a href="https://kai-denrei.github.io/textstring/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Text String</h2>
     <p>Physics-based chain simulation -- characters as beads on a string with gravity, drag, and collisions</p>
     <span class="tag">experiment / pretext</span>
-  </a>
+    </a>
+  </div>
 
-  <a class="card" href="https://www.grapplingprimitives.com">
+  <div class="card">
+    <span class="deep-link" data-url="https://www.grapplingprimitives.com">link</span>
+    <a href="https://www.grapplingprimitives.com" style="text-decoration:none;color:inherit;display:contents">
     <h2>Grappling Primitives</h2>
     <p>Articles, tools, and interactive modules for grappling arts -- concepts, training, analysis</p>
     <span class="tag">martial arts / tools</span>
-  </a>
+    </a>
+  </div>
 
 </div>
+
+<script>
+document.querySelectorAll('.deep-link').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const url = btn.dataset.url;
+    navigator.clipboard.writeText(url).then(() => {
+      btn.textContent = 'copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'link'; btn.classList.remove('copied'); }, 1500);
+    });
+  });
+});
+</script>
 
 </body>
 </html>
