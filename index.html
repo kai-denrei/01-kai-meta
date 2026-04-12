@@ -100,6 +100,21 @@
 
   .deep-link:hover { color: #aaa; border-color: #4a4a5a; }
   .deep-link.copied { color: #8b9dc3; border-color: #8b9dc3; }
+
+  @media (max-width: 600px) {
+    body { padding: 1.5rem 0.75rem; }
+    header { margin: 0 auto 1.5rem; }
+    header h1 { font-size: 1.3rem; }
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+    .card { padding: 0.7rem; gap: 0.3rem; }
+    .card h2 { font-size: 0.78rem; }
+    .card p { font-size: 0.65rem; line-height: 1.35; }
+    .card .tag { font-size: 0.58rem; }
+    .deep-link { top: 0.4rem; right: 0.4rem; font-size: 0.55rem; padding: 1px 4px; }
+  }
 </style>
 </head>
 <body>
@@ -115,7 +130,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/GamblerRuin/">link</span>
     <a href="https://kai-denrei.github.io/GamblerRuin/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Gambler's Ruin</h2>
-    <p>Dubins-Savage theorem -- bold play vs timid play with Monte Carlo simulations</p>
+    <p>Bold vs timid play -- Monte Carlo simulations</p>
     <span class="tag">probability</span>
     </a>
   </div>
@@ -124,7 +139,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/GamblerRuin/catan.html">link</span>
     <a href="https://kai-denrei.github.io/GamblerRuin/catan.html" style="text-decoration:none;color:inherit;display:contents">
     <h2>Catan Probabilities</h2>
-    <p>Dice distributions, gambler's fallacy, and dev card odds -- bilingual EN/JP</p>
+    <p>Dice odds, dev card draws -- EN/JP</p>
     <span class="tag">probability / games</span>
     </a>
   </div>
@@ -133,7 +148,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/braille-lab/">link</span>
     <a href="https://kai-denrei.github.io/braille-lab/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Braille Lab</h2>
-    <p>Minimalist visualizations using Unicode Braille characters -- animations, pixel editor, faces</p>
+    <p>Unicode Braille animations, pixel editor, faces</p>
     <span class="tag">visualization</span>
     </a>
   </div>
@@ -142,7 +157,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/jp-fsa-exchanges/">link</span>
     <a href="https://kai-denrei.github.io/jp-fsa-exchanges/" style="text-decoration:none;color:inherit;display:contents">
     <h2>JP FSA Exchanges</h2>
-    <p>Interactive explorer of FSA-registered cryptocurrency exchanges in Japan</p>
+    <p>FSA-registered crypto exchanges in Japan</p>
     <span class="tag">finance / data</span>
     </a>
   </div>
@@ -151,7 +166,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/gh-japanese-martial-arts/">link</span>
     <a href="https://kai-denrei.github.io/gh-japanese-martial-arts/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Japanese Martial Arts</h2>
-    <p>Historical timeline from 712 CE to modern era -- primary sources, lexicon, scholarly analysis</p>
+    <p>712 CE to modern era -- primary sources and lexicon</p>
     <span class="tag">history / martial arts</span>
     </a>
   </div>
@@ -160,7 +175,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/fiore-delli-liberi/">link</span>
     <a href="https://kai-denrei.github.io/fiore-delli-liberi/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Fiore dei Liberi</h2>
-    <p>Fior di Battaglia -- interactive manuscript reader with multi-source translations and lexicon</p>
+    <p>Fior di Battaglia -- manuscript reader with translations</p>
     <span class="tag">history / manuscripts</span>
     </a>
   </div>
@@ -169,7 +184,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/gh-ancient-greece/">link</span>
     <a href="https://kai-denrei.github.io/gh-ancient-greece/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Ancient Greek Grappling</h2>
-    <p>Pale and pankration through primary sources -- 708 BCE to 500 CE</p>
+    <p>Pale and pankration -- 708 BCE to 500 CE</p>
     <span class="tag">history / martial arts</span>
     </a>
   </div>
@@ -178,7 +193,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/SardinesFast/">link</span>
     <a href="https://kai-denrei.github.io/SardinesFast/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Sardines Fast</h2>
-    <p>5-day sardine fasting-mimicking diet tracker with daily logging and wellness metrics</p>
+    <p>5-day sardine fasting protocol tracker</p>
     <span class="tag">health / tracking</span>
     </a>
   </div>
@@ -187,7 +202,7 @@
     <span class="deep-link" data-url="https://www.grapplingprimitives.com/modules/breathing/">link</span>
     <a href="https://www.grapplingprimitives.com/modules/breathing/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Breathing Text</h2>
-    <p>Canvas-rendered text that breathes -- characters scale and fade on a respiratory cycle</p>
+    <p>Characters scale and fade on a breathing cycle</p>
     <span class="tag">experiment / pretext</span>
     </a>
   </div>
@@ -196,7 +211,7 @@
     <span class="deep-link" data-url="https://kai-denrei.github.io/textstring/">link</span>
     <a href="https://kai-denrei.github.io/textstring/" style="text-decoration:none;color:inherit;display:contents">
     <h2>Text String</h2>
-    <p>Physics-based chain simulation -- characters as beads on a string with gravity, drag, and collisions</p>
+    <p>Characters on a physics chain -- drag, gravity, collisions</p>
     <span class="tag">experiment / pretext</span>
     </a>
   </div>
@@ -214,7 +229,7 @@
     <span class="deep-link" data-url="https://www.grapplingprimitives.com">link</span>
     <a href="https://www.grapplingprimitives.com" style="text-decoration:none;color:inherit;display:contents">
     <h2>Grappling Primitives</h2>
-    <p>Articles, tools, and interactive modules for grappling arts -- concepts, training, analysis</p>
+    <p>Articles and tools for grappling arts</p>
     <span class="tag">martial arts / tools</span>
     </a>
   </div>
