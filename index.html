@@ -16,8 +16,8 @@
   }
 
   header {
-    max-width: 720px;
-    margin: 0 auto 3rem;
+    max-width: 960px;
+    margin: 0 auto 2.5rem;
     text-align: center;
   }
 
@@ -35,85 +35,130 @@
   }
 
   .grid {
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
 
   .card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
     background: #12121a;
     border: 1px solid #1e1e2a;
-    border-radius: 6px;
-    padding: 1.2rem;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    transition: border-color 0.2s, background 0.2s;
-    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
   }
 
   .card:hover {
     border-color: #3a3a50;
-    background: #16161f;
+    transform: translateY(-2px);
+  }
+
+  .card a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card .thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0e0e16;
+  }
+
+  .card .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s;
+  }
+
+  .card:hover .thumb img {
+    opacity: 0.85;
+  }
+
+  .card .info {
+    padding: 0.8rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .card h2 {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #e0e0e8;
     line-height: 1.3;
   }
 
-  .card p {
-    font-size: 0.78rem;
-    color: #888;
-    line-height: 1.45;
+  .card .desc {
+    font-size: 0.72rem;
+    color: #777;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .card .tag {
-    margin-top: auto;
-    font-size: 0.68rem;
+    margin-top: 0.2rem;
+    font-size: 0.62rem;
     color: #555;
     letter-spacing: 0.04em;
   }
 
   .deep-link {
     position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
-    font-size: 0.62rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+    font-size: 0.6rem;
     font-weight: 500;
-    padding: 2px 6px;
-    background: none;
-    border: 1px solid #2a2a3a;
+    padding: 2px 7px;
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 3px;
-    color: #555;
+    color: #999;
     cursor: pointer;
     transition: all 0.15s;
     text-decoration: none;
     line-height: 1.4;
   }
 
-  .deep-link:hover { color: #aaa; border-color: #4a4a5a; }
+  .deep-link:hover { color: #ddd; border-color: rgba(255,255,255,0.3); }
   .deep-link.copied { color: #8b9dc3; border-color: #8b9dc3; }
 
-  @media (max-width: 600px) {
-    body { padding: 1.5rem 0.75rem; }
+  /* Tablet: 2 columns */
+  @media (max-width: 768px) {
+    body { padding: 2rem 1rem; }
     header { margin: 0 auto 1.5rem; }
-    header h1 { font-size: 1.3rem; }
     .grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
-    .card { padding: 0.7rem; gap: 0.3rem; }
+    .card .info { padding: 0.6rem 0.7rem; }
     .card h2 { font-size: 0.78rem; }
-    .card p { font-size: 0.65rem; line-height: 1.35; }
-    .card .tag { font-size: 0.58rem; }
-    .deep-link { top: 0.4rem; right: 0.4rem; font-size: 0.55rem; padding: 1px 4px; }
+    .card .desc { font-size: 0.66rem; }
+  }
+
+  /* Phone: 1 column */
+  @media (max-width: 440px) {
+    body { padding: 1.5rem 0.75rem; }
+    header h1 { font-size: 1.3rem; }
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .card .info { padding: 0.7rem 0.8rem; }
+    .card h2 { font-size: 0.82rem; }
+    .card .desc { font-size: 0.68rem; -webkit-line-clamp: 3; }
   }
 </style>
 </head>
@@ -128,82 +173,127 @@
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/GamblerRuin/">link</span>
-    <a href="https://kai-denrei.github.io/GamblerRuin/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Gambler's Ruin</h2>
-    <p>Bold vs timid play -- Monte Carlo simulations</p>
-    <span class="tag">probability</span>
+    <a href="https://kai-denrei.github.io/GamblerRuin/">
+      <div class="thumb">
+        <img src="screenshots/gamblers-ruin.webp" alt="Gambler's Ruin" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Gambler's Ruin</h2>
+        <p class="desc">Bold vs timid play -- Monte Carlo simulations</p>
+        <span class="tag">probability</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/GamblerRuin/catan.html">link</span>
-    <a href="https://kai-denrei.github.io/GamblerRuin/catan.html" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Catan Probabilities</h2>
-    <p>Dice odds, dev card draws -- EN/JP</p>
-    <span class="tag">probability / games</span>
+    <a href="https://kai-denrei.github.io/GamblerRuin/catan.html">
+      <div class="thumb">
+        <img src="screenshots/catan-probabilities.webp" alt="Catan Probabilities" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Catan Probabilities</h2>
+        <p class="desc">Dice odds, dev card draws -- EN/JP</p>
+        <span class="tag">probability / games</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/damascus-steel-patterns/">link</span>
-    <a href="https://kai-denrei.github.io/damascus-steel-patterns/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Damascus Steel</h2>
-    <p>Pattern simulator -- composable deformation stack with blade preview</p>
-    <span class="tag">simulation / metallurgy</span>
+    <a href="https://kai-denrei.github.io/damascus-steel-patterns/">
+      <div class="thumb">
+        <img src="screenshots/damascus-steel.webp" alt="Damascus Steel" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Damascus Steel</h2>
+        <p class="desc">Pattern simulator -- composable deformation stack with blade preview</p>
+        <span class="tag">simulation / metallurgy</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/braille-lab/">link</span>
-    <a href="https://kai-denrei.github.io/braille-lab/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Braille Lab</h2>
-    <p>Unicode Braille animations, pixel editor, faces</p>
-    <span class="tag">visualization</span>
+    <a href="https://kai-denrei.github.io/braille-lab/">
+      <div class="thumb">
+        <img src="screenshots/braille-lab.webp" alt="Braille Lab" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Braille Lab</h2>
+        <p class="desc">Unicode Braille animations, pixel editor, faces</p>
+        <span class="tag">visualization</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/jp-fsa-exchanges/">link</span>
-    <a href="https://kai-denrei.github.io/jp-fsa-exchanges/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>JP FSA Exchanges</h2>
-    <p>FSA-registered crypto exchanges in Japan</p>
-    <span class="tag">finance / data</span>
+    <a href="https://kai-denrei.github.io/jp-fsa-exchanges/">
+      <div class="thumb">
+        <img src="screenshots/jp-fsa-exchanges.webp" alt="JP FSA Exchanges" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>JP FSA Exchanges</h2>
+        <p class="desc">FSA-registered crypto exchanges in Japan</p>
+        <span class="tag">finance / data</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/grappling-history/">link</span>
-    <a href="https://kai-denrei.github.io/grappling-history/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Grappling History</h2>
-    <p>Primary sources, contested translations, and influence webs across martial traditions -- Greece, Japan, Fiore</p>
-    <span class="tag">history / martial arts</span>
+    <a href="https://kai-denrei.github.io/grappling-history/">
+      <div class="thumb">
+        <img src="screenshots/grappling-history.webp" alt="Grappling History" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Grappling History</h2>
+        <p class="desc">Primary sources, contested translations, and influence webs across martial traditions</p>
+        <span class="tag">history / martial arts</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/SardinesFast/">link</span>
-    <a href="https://kai-denrei.github.io/SardinesFast/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Sardines Fast</h2>
-    <p>5-day sardine fasting protocol tracker</p>
-    <span class="tag">health / tracking</span>
+    <a href="https://kai-denrei.github.io/SardinesFast/">
+      <div class="thumb">
+        <img src="screenshots/sardines-fast.webp" alt="Sardines Fast" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Sardines Fast</h2>
+        <p class="desc">5-day sardine fasting protocol tracker</p>
+        <span class="tag">health / tracking</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://www.grapplingprimitives.com/modules/breathing/">link</span>
-    <a href="https://www.grapplingprimitives.com/modules/breathing/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Breathing Text</h2>
-    <p>Characters scale and fade on a breathing cycle</p>
-    <span class="tag">experiment / pretext</span>
+    <a href="https://www.grapplingprimitives.com/modules/breathing/">
+      <div class="thumb">
+        <img src="screenshots/breathing-text.webp" alt="Breathing Text" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Breathing Text</h2>
+        <p class="desc">Characters scale and fade on a breathing cycle</p>
+        <span class="tag">experiment / pretext</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/textstring/">link</span>
-    <a href="https://kai-denrei.github.io/textstring/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Text String</h2>
-    <p>Characters on a physics chain -- drag, gravity, collisions</p>
-    <span class="tag">experiment / pretext</span>
+    <a href="https://kai-denrei.github.io/textstring/">
+      <div class="thumb">
+        <img src="screenshots/text-string.webp" alt="Text String" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Text String</h2>
+        <p class="desc">Characters on a physics chain -- drag, gravity, collisions</p>
+        <span class="tag">experiment / pretext</span>
+      </div>
     </a>
   </div>
 
@@ -218,37 +308,57 @@
 
   <div class="card">
     <span class="deep-link" data-url="https://kai-denrei.github.io/qr-code-games/">link</span>
-    <a href="https://kai-denrei.github.io/qr-code-games/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>QR Code Games</h2>
-    <p>8-bit mini-experiments in progressive QR-code destruction</p>
-    <span class="tag">experiment / games</span>
+    <a href="https://kai-denrei.github.io/qr-code-games/">
+      <div class="thumb">
+        <img src="screenshots/qr-code-games.webp" alt="QR Code Games" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>QR Code Games</h2>
+        <p class="desc">8-bit mini-experiments in progressive QR-code destruction</p>
+        <span class="tag">experiment / games</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://www.grapplingprimitives.com/modules/grapplingstats/">link</span>
-    <a href="https://www.grapplingprimitives.com/modules/grapplingstats/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Grappling Meta</h2>
-    <p>KO/TKO/Submission evolution -- WNO, ADCC, UFC, nogi stats</p>
-    <span class="tag">martial arts / data</span>
+    <a href="https://www.grapplingprimitives.com/modules/grapplingstats/">
+      <div class="thumb">
+        <img src="screenshots/grappling-meta.webp" alt="Grappling Meta" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Grappling Meta</h2>
+        <p class="desc">KO/TKO/Submission evolution -- WNO, ADCC, UFC, nogi stats</p>
+        <span class="tag">martial arts / data</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://www.grapplingprimitives.com">link</span>
-    <a href="https://www.grapplingprimitives.com" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Grappling Primitives</h2>
-    <p>Articles and tools for grappling arts</p>
-    <span class="tag">martial arts / tools</span>
+    <a href="https://www.grapplingprimitives.com">
+      <div class="thumb">
+        <img src="screenshots/grappling-primitives.webp" alt="Grappling Primitives" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Grappling Primitives</h2>
+        <p class="desc">Articles and tools for grappling arts</p>
+        <span class="tag">martial arts / tools</span>
+      </div>
     </a>
   </div>
 
   <div class="card">
     <span class="deep-link" data-url="https://jelaludo.github.io/01-jela-meta/">link</span>
-    <a href="https://jelaludo.github.io/01-jela-meta/" style="text-decoration:none;color:inherit;display:contents">
-    <h2>Jelaludo</h2>
-    <p>Gerald's projects</p>
-    <span class="tag">meta / cross-account</span>
+    <a href="https://jelaludo.github.io/01-jela-meta/">
+      <div class="thumb">
+        <img src="screenshots/jelaludo.webp" alt="Jelaludo" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Jelaludo</h2>
+        <p class="desc">Gerald's projects</p>
+        <span class="tag">meta / cross-account</span>
+      </div>
     </a>
   </div>
 
