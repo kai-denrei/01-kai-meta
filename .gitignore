@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor scratch
+*.swp
+*~
+
+# Local-only screenshot tooling (not part of the published page)
+node_modules/
+package.json
+package-lock.json
+take-screenshot.mjs
+
+# Playwright artifacts
+test-results/
+playwright-report/
