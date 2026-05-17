@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 const URL = 'https://kai-denrei.github.io/CistercianWeave/kanji.html';
-const OUT = '/Users/minikai/Documents/Dev/01-kai-meta/screenshots/cistercian-kanji.png';
+const OUT = 'screenshots/cistercian-kanji.png';
 const VW = 800, VH = 500;
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: VW, height: VH }, deviceScaleFactor: 2 });
