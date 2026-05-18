@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 // Land on /primitives (the catalog page) — the / route auto-opens a search modal
 // that occludes the hero, and /primitives has richer visual content anyway.
 const URL = 'https://kai-denrei.github.io/gaming-primitives/p/';
-const OUT = '/Users/minikai/Documents/Dev/01-kai-meta/screenshots/gaming-primitives.png';
+const OUT = 'screenshots/gaming-primitives.png';
 const VW = 800, VH = 500;
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: VW, height: VH }, deviceScaleFactor: 2 });
