@@ -18,21 +18,23 @@
   const labelMatch = raw.match(/#(.+)$/);
   const label = labelMatch ? labelMatch[1] : "";
 
+  // Mount inline into #cb-badge-slot when the page provides one; otherwise pin
+  // to the bottom-right corner (default for any page that uses this script).
+  const slot = document.getElementById("cb-badge-slot");
+  const tileSize = slot ? 16 : 20;
+
   // Build the badge.
   const badge = document.createElement("div");
   badge.id = "cb-badge";
   badge.setAttribute("data-cb", hex);
   badge.style.cssText = [
-    "position:fixed",
-    "bottom:8px",
-    "right:8px",
-    "display:flex",
+    slot ? "display:inline-flex" : "position:fixed",
+    ...(slot ? [] : ["bottom:8px", "right:8px", "display:flex", "z-index:2147483647"]),
     "gap:2px",
     "padding:4px 6px",
     "background:#111",
     "border:1px solid #2a2a2a",
     "border-radius:6px",
-    "z-index:2147483647",
     "font:11px ui-monospace,SFMono-Regular,Menlo,monospace",
     "color:#888",
     "align-items:center",
@@ -43,8 +45,8 @@
     const img = document.createElement("img");
     img.src = `cb-shapes/${pad(c)}.webp`;
     img.alt = "";
-    img.width = 20;
-    img.height = 20;
+    img.width = tileSize;
+    img.height = tileSize;
     img.style.cssText = "display:block;border-radius:2px";
     img.onerror = () => { img.src = `cb-shapes/${pad(c)}.svg`; };
     return img;
@@ -65,10 +67,11 @@
     setTimeout(() => { hexEl.style.color = "#bbb"; }, 600);
   });
 
-  // Mount once DOM is ready.
+  // Mount once DOM is ready — into the slot if present, else the page body.
+  const mount = () => (document.getElementById("cb-badge-slot") || document.body).appendChild(badge);
   if (document.body) {
-    document.body.appendChild(badge);
+    mount();
   } else {
-    document.addEventListener("DOMContentLoaded", () => document.body.appendChild(badge));
+    document.addEventListener("DOMContentLoaded", mount);
   }
 })();

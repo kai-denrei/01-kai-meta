@@ -1,0 +1,462 @@
+{
+  "categories": [
+    "Gaming",
+    "UX",
+    "Visual Effects",
+    "Martial Arts",
+    "Lifestyle",
+    "Cogita",
+    "Tools",
+    "Misc"
+  ],
+  "projects": [
+    {
+      "id": "8-bit-elements",
+      "title": "8-Bit Elements",
+      "url": "https://kai-denrei.github.io/8-bit-elements/",
+      "img": "screenshots/8-bit-elements.webp",
+      "alt": "8-Bit Elements",
+      "desc": "Classical elements as live 8-bit cellular sims that paint moving numbers — fire, water, sand, void and more, with a CRT mode and tunable physics",
+      "tag": "PWA / simulation",
+      "categories": [
+        "Visual Effects"
+      ],
+      "state": 18
+    },
+    {
+      "id": "laifu-keisan",
+      "title": "laifukeisan",
+      "url": "https://kai-denrei.github.io/laifu-keisan/",
+      "img": "screenshots/laifu-keisan.webp",
+      "alt": "laifukeisan",
+      "desc": "Tabletop life counter — 2–5 player radial board, three skins, wake-lock keeps the screen alive, installable offline",
+      "tag": "PWA / tabletop",
+      "categories": [
+        "Gaming",
+        "Tools",
+        "Visual Effects",
+        "UX"
+      ],
+      "state": 32
+    },
+    {
+      "id": "cymatics-beauty",
+      "title": "Cymatics",
+      "url": "https://kai-denrei.github.io/cymatics-beauty/",
+      "img": "screenshots/cymatics-beauty.webp",
+      "alt": "Cymatics",
+      "desc": "Chladni-style standing-wave field — slide (m,n), watch particles settle along the nodal lines, synth tone tracks the mode",
+      "tag": "simulation / acoustics",
+      "categories": [
+        "Visual Effects",
+        "UX",
+        "Tools"
+      ],
+      "state": 14
+    },
+    {
+      "id": "heptaweave",
+      "title": "Heptaweave",
+      "url": "https://kai-denrei.github.io/heptaweave/",
+      "img": "screenshots/heptaweave.webp",
+      "alt": "Heptaweave",
+      "desc": "Read the Cistercian numeral, pick the matching heptacipher logogram — sumi-ink-on-paper PWA quiz",
+      "tag": "game / typography",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 27
+    },
+    {
+      "id": "ceti-visuals",
+      "title": "CETI Visuals",
+      "url": "https://kai-denrei.github.io/CETI-visuals/web/",
+      "img": "screenshots/ceti-visuals.webp",
+      "alt": "CETI Visuals",
+      "desc": "Radar-style PPI sweep through sperm whale coda data — 18 rhythm clusters mapped to bearing, sweep timing scrubs the deployment timeline",
+      "tag": "visualization / cetacean",
+      "categories": [
+        "Cogita",
+        "Visual Effects"
+      ],
+      "state": 18
+    },
+    {
+      "id": "uzumaki-fractals",
+      "title": "Uzumaki Fractals",
+      "url": "https://kai-denrei.github.io/uzumaki-fractals/",
+      "img": "screenshots/uzumaki-fractals.webp",
+      "alt": "Uzumaki Fractals",
+      "desc": "Twelve strange attractors rendered as living ink — Clifford, de Jong, Lorenz and others, every parameter slidable",
+      "tag": "visualization / attractors",
+      "categories": [
+        "Cogita",
+        "Visual Effects"
+      ],
+      "state": 14
+    },
+    {
+      "id": "os-genealogy",
+      "title": "OS Genealogy",
+      "url": "https://kai-denrei.github.io/os-genealogy/",
+      "img": "screenshots/os-genealogy.webp",
+      "alt": "OS Genealogy",
+      "desc": "A timeline of user-facing operating systems and their bare-metal substrates — lineage, hypervisors, containers, unikernels from 1970 to today",
+      "tag": "history / operating-systems",
+      "categories": [
+        "Cogita",
+        "Visual Effects"
+      ],
+      "state": 27
+    },
+    {
+      "id": "heptacipher",
+      "title": "Heptacipher",
+      "url": "https://kai-denrei.github.io/heptacipher/",
+      "img": "screenshots/heptacipher.webp",
+      "alt": "Heptacipher",
+      "desc": "Read the handwritten digit, tap the matching number — five rounds against your own perception",
+      "tag": "game / perception",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 27
+    },
+    {
+      "id": "gaming-primitives",
+      "title": "Gaming Primitives",
+      "url": "https://kai-denrei.github.io/gaming-primitives/",
+      "img": "screenshots/gaming-primitives.webp",
+      "alt": "Gaming Primitives",
+      "desc": "The irreducible mechanisms underneath thousands of games — 21 families, 100 variants, every parameter slidable",
+      "tag": "catalog / game-design",
+      "categories": [
+        "Gaming",
+        "UX",
+        "Visual Effects",
+        "Cogita",
+        "Tools"
+      ],
+      "state": 18
+    },
+    {
+      "id": "cistercian-kanji",
+      "title": "Cistercian Weave — Kanji Rite",
+      "url": "https://kai-denrei.github.io/CistercianWeave/kanji.html",
+      "img": "screenshots/cistercian-kanji.webp",
+      "alt": "Cistercian Weave — Kanji Rite",
+      "desc": "Read a Cistercian sigil, find the matching kanji, touch its center — glyph drifts and ghosts as tiers escalate",
+      "tag": "game / typography",
+      "categories": [
+        "Gaming"
+      ],
+      "state": 9
+    },
+    {
+      "id": "kakistogenesis",
+      "title": "ペシ魔鉄則 — Peshi-ma Tessoku",
+      "url": "https://kai-denrei.github.io/kakistogenesis/",
+      "img": "screenshots/kakistogenesis.webp",
+      "alt": "ペシ魔鉄則 — Peshi-ma Tessoku",
+      "desc": "How institutions convert good intent into harmful outcomes — 22 mechanisms catalogued and animated",
+      "tag": "essay / political-theory",
+      "categories": [
+        "Visual Effects",
+        "Cogita"
+      ],
+      "state": 18
+    },
+    {
+      "id": "not-all-not-none",
+      "title": "Nuance Is Not a Dirty Word",
+      "url": "https://kai-denrei.github.io/not-all-not-none/",
+      "img": "screenshots/not-all-not-none.webp",
+      "alt": "Nuance Is Not a Dirty Word",
+      "desc": "Against collapsing multi-segment distributions into one-dimensional policy verdicts — 21 fault lines",
+      "tag": "essay / political-theory",
+      "categories": [
+        "Visual Effects",
+        "Cogita"
+      ],
+      "state": 18
+    },
+    {
+      "id": "centroid-defense",
+      "title": "DEEPWATCH",
+      "url": "https://kai-denrei.github.io/centroid-defense/",
+      "img": "screenshots/centroid-defense.webp",
+      "alt": "DEEPWATCH",
+      "desc": "Phosphor-sonar tower defense — read the PPI sweep, lead the cluster, strikes land on delay",
+      "tag": "game / canvas",
+      "categories": [
+        "Gaming",
+        "UX",
+        "Visual Effects"
+      ],
+      "state": 18
+    },
+    {
+      "id": "synthetic-learning",
+      "title": "Synthetic Learning x58",
+      "url": "https://kai-denrei.github.io/synthetic-learningx58/",
+      "img": "screenshots/synthetic-learning.webp",
+      "alt": "Synthetic Learning x58",
+      "desc": "58 tiny neural-net visualizations training in parallel on a phosphor CRT — canvas 2D, ES modules, no deps",
+      "tag": "visualization / neural-nets",
+      "categories": [
+        "Visual Effects"
+      ],
+      "state": 27
+    },
+    {
+      "id": "vector-sum",
+      "title": "Vector ✕ Cohesion",
+      "url": "https://kai-denrei.github.io/vector-sum/",
+      "img": "screenshots/vector-sum.webp",
+      "alt": "Vector ✕ Cohesion",
+      "desc": "A field of arrows — some align with the civic goal, some pull elsewhere; systems-thinking simulator + philosophy companion",
+      "tag": "simulation / PWA",
+      "categories": [
+        "Cogita",
+        "Visual Effects"
+      ],
+      "state": 18
+    },
+    {
+      "id": "kikacentroid",
+      "title": "KikaCentroid",
+      "url": "https://kai-denrei.github.io/KikaCentroid/",
+      "img": "screenshots/kikacentroid.webp",
+      "alt": "KikaCentroid",
+      "desc": "Estimate the centroid of a dot cluster — installable PWA, plays offline, 10 rounds",
+      "tag": "game / PWA",
+      "categories": [
+        "Gaming",
+        "UX"
+      ],
+      "state": 32
+    },
+    {
+      "id": "cyber-security-frameworks",
+      "title": "Cyber Security Frameworks",
+      "url": "https://kai-denrei.github.io/cyber-security-frameworks/",
+      "img": "screenshots/cyber-security-frameworks.webp",
+      "alt": "Cyber Security Frameworks",
+      "desc": "Interactive educational site covering 6 cybersecurity threat classification frameworks",
+      "tag": "security / education",
+      "categories": [
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "japan-demography",
+      "title": "Japan Demographics",
+      "url": "https://kai-denrei.github.io/japan-demography/",
+      "img": "screenshots/japan-demography.webp",
+      "alt": "Japan Demographics",
+      "desc": "Interactive data viz — population, foreign residents, crime, tourism, economy across 47 prefectures",
+      "tag": "data / visualization / D3.js",
+      "categories": [
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "gamblers-ruin",
+      "title": "Gambler's Ruin",
+      "url": "https://kai-denrei.github.io/GamblerRuin/",
+      "img": "screenshots/gamblers-ruin.webp",
+      "alt": "Gambler's Ruin",
+      "desc": "Bold vs timid play -- Monte Carlo simulations",
+      "tag": "probability",
+      "categories": [
+        "Cogita",
+        "Misc"
+      ],
+      "state": 20
+    },
+    {
+      "id": "catan-probabilities",
+      "title": "Catan Probabilities",
+      "url": "https://kai-denrei.github.io/GamblerRuin/catan.html",
+      "img": "screenshots/catan-probabilities.webp",
+      "alt": "Catan Probabilities",
+      "desc": "Dice odds, dev card draws -- EN/JP",
+      "tag": "probability / games",
+      "categories": [
+        "Gaming",
+        "Cogita"
+      ],
+      "state": 27
+    },
+    {
+      "id": "damascus-steel",
+      "title": "Damascus Steel",
+      "url": "https://kai-denrei.github.io/damascus-steel-patterns/",
+      "img": "screenshots/damascus-steel.webp",
+      "alt": "Damascus Steel",
+      "desc": "Pattern simulator -- composable deformation stack with blade preview",
+      "tag": "simulation / metallurgy",
+      "categories": [
+        "Gaming",
+        "UX",
+        "Visual Effects"
+      ],
+      "state": 27
+    },
+    {
+      "id": "braille-lab",
+      "title": "Braille Lab",
+      "url": "https://kai-denrei.github.io/braille-lab/",
+      "img": "screenshots/braille-lab.webp",
+      "alt": "Braille Lab",
+      "desc": "Unicode Braille animations, pixel editor, faces",
+      "tag": "visualization",
+      "categories": [
+        "Visual Effects",
+        "UX",
+        "Gaming",
+        "Tools",
+        "Misc"
+      ],
+      "state": 31
+    },
+    {
+      "id": "grappling-history",
+      "title": "Grappling History",
+      "url": "https://kai-denrei.github.io/grappling-history/",
+      "img": "screenshots/grappling-history.webp",
+      "alt": "Grappling History",
+      "desc": "Primary sources, contested translations, and influence webs across martial traditions",
+      "tag": "history / martial arts",
+      "categories": [
+        "Martial Arts"
+      ],
+      "state": 27
+    },
+    {
+      "id": "sardines-fast",
+      "title": "Sardines Fast",
+      "url": "https://kai-denrei.github.io/SardinesFast/",
+      "img": "screenshots/sardines-fast.webp",
+      "alt": "Sardines Fast",
+      "desc": "5-day sardine fasting protocol tracker",
+      "tag": "health / tracking",
+      "categories": [
+        "Lifestyle",
+        "Misc"
+      ],
+      "state": 4
+    },
+    {
+      "id": "breathing-text",
+      "title": "Breathing Text",
+      "url": "https://www.grapplingprimitives.com/modules/breathing/",
+      "img": "screenshots/breathing-text.webp",
+      "alt": "Breathing Text",
+      "desc": "Characters scale and fade on a breathing cycle",
+      "tag": "experiment / pretext",
+      "categories": [
+        "Visual Effects",
+        "Misc"
+      ],
+      "state": 27
+    },
+    {
+      "id": "text-string",
+      "title": "Text String",
+      "url": "https://kai-denrei.github.io/textstring/",
+      "img": "screenshots/text-string.webp",
+      "alt": "Text String",
+      "desc": "Characters on a physics chain -- drag, gravity, collisions",
+      "tag": "experiment / pretext",
+      "categories": [
+        "Visual Effects",
+        "Misc"
+      ],
+      "state": 18
+    },
+    {
+      "id": "maze-lightning",
+      "title": "Lightning Maze",
+      "url": "https://kai-denrei.github.io/maze-lightning/",
+      "img": "screenshots/maze-lightning.webp",
+      "alt": "Lightning Maze",
+      "desc": "BFS shortest-path visualizer -- lightning strike through a random maze",
+      "tag": "algorithm / simulation",
+      "categories": [
+        "Visual Effects",
+        "Gaming"
+      ],
+      "state": 32
+    },
+    {
+      "id": "qr-code-games",
+      "title": "QR Code Games",
+      "url": "https://kai-denrei.github.io/qr-code-games/",
+      "img": "screenshots/qr-code-games.webp",
+      "alt": "QR Code Games",
+      "desc": "8-bit mini-experiments in progressive QR-code destruction",
+      "tag": "experiment / games",
+      "categories": [
+        "Gaming",
+        "UX",
+        "Visual Effects",
+        "Cogita",
+        "Tools"
+      ],
+      "state": 32
+    },
+    {
+      "id": "grappling-meta",
+      "title": "Grappling Meta",
+      "url": "https://www.grapplingprimitives.com/modules/grapplingstats/",
+      "img": "screenshots/grappling-meta.webp",
+      "alt": "Grappling Meta",
+      "desc": "KO/TKO/Submission evolution -- WNO, ADCC, UFC, nogi stats",
+      "tag": "martial arts / data",
+      "categories": [
+        "Martial Arts",
+        "Cogita"
+      ],
+      "state": 27
+    },
+    {
+      "id": "grappling-primitives",
+      "title": "Grappling Primitives",
+      "url": "https://www.grapplingprimitives.com",
+      "img": "screenshots/grappling-primitives.webp",
+      "alt": "Grappling Primitives",
+      "desc": "Articles and tools for grappling arts",
+      "tag": "martial arts / tools",
+      "categories": [
+        "Martial Arts",
+        "Cogita"
+      ],
+      "state": 27
+    },
+    {
+      "id": "jelaludo",
+      "title": "Jelaludo",
+      "url": "https://jelaludo.github.io/01-jela-meta/",
+      "img": "screenshots/jelaludo.webp",
+      "alt": "Jelaludo",
+      "desc": "Gerald's projects",
+      "tag": "meta / cross-account",
+      "categories": [
+        "Martial Arts",
+        "Tools",
+        "Misc",
+        "Visual Effects",
+        "UX",
+        "Lifestyle",
+        "Cogita",
+        "Gaming"
+      ],
+      "state": 18
+    }
+  ]
+}
