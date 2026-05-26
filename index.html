@@ -218,6 +218,22 @@
   .cat-toggle:hover { border-color: #3a3a50; color: #aaa; }
   .cat-toggle.on { color: #0a0a0f; background: #c89a55; border-color: #c89a55; font-weight: 600; }
 
+  /* ===== Admin: open-in-cmux + repo link (admin mode only) ===== */
+  .admin-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; margin-top: 0.45rem; }
+  .open-cmux {
+    font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.6rem; letter-spacing: 0.03em;
+    color: #0a0a0f; background: #c89a55; border: 1px solid #c89a55; border-radius: 3px;
+    padding: 2px 8px; cursor: pointer; white-space: nowrap; transition: all 0.12s;
+  }
+  .open-cmux:hover:not(:disabled) { background: #ffdca8; border-color: #ffdca8; }
+  .open-cmux:disabled { opacity: 0.85; cursor: default; }
+  .repo-link {
+    font-size: 0.6rem; letter-spacing: 0.03em; color: #8b9dc3; text-decoration: none;
+    border: 1px solid #2a2f40; background: #161a26; border-radius: 3px; padding: 2px 8px;
+    white-space: nowrap; transition: all 0.12s;
+  }
+  .repo-link:hover { color: #c8d4ee; border-color: #3a4258; }
+
   /* ===== Filter bar ===== */
   .filters { max-width: 960px; margin: 0 auto 1.5rem; display: flex; flex-direction: column; gap: 0.55rem; }
   .filter-row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
@@ -567,6 +583,21 @@
   let fCat = null, fThr = 0, fSearch = '';
 
   // ---- Card rendering ----
+  // GitHub web URL for a project: explicit p.repo wins; else parse a *.github.io
+  // deploy URL into owner/repo; else null (custom domains -> no link).
+  function githubUrlFor(p) {
+    if (p.repo) return 'https://github.com/' + p.repo;
+    try {
+      const u = new URL(p.url);
+      if (u.hostname.endsWith('github.io')) {
+        const owner = u.hostname.split('.')[0];
+        const seg = u.pathname.split('/').filter(Boolean)[0];
+        if (owner && seg) return 'https://github.com/' + owner + '/' + seg;
+      }
+    } catch (e) { /* non-URL */ }
+    return null;
+  }
+
   function cardHTML(p) {
     const pct = percentForState(p.state);
     const catsPublic = p.categories.length
@@ -575,6 +606,11 @@
     const catsAdmin = '<div class="cats">' + CATEGORIES.map(c =>
       '<button class="cat-toggle' + (p.categories.includes(c) ? ' on' : '') + '" data-cat="' + esc(c) + '">' + esc(c) + '</button>'
     ).join('') + '</div>';
+    const gh = githubUrlFor(p);
+    const adminActions = '<div class="admin-actions">' +
+      '<button class="open-cmux" type="button" data-id="' + esc(p.id) + '">&gt;_ cmux</button>' +
+      (gh ? '<a class="repo-link" href="' + esc(gh) + '" target="_blank" rel="noopener">repo &#8599;</a>' : '') +
+      '</div>';
     return '' +
       '<div class="card" data-id="' + esc(p.id) + '">' +
         '<span class="deep-link" data-url="' + esc(p.url) + '">link</span>' +
@@ -589,6 +625,7 @@
         '<div class="card-foot">' +
           '<div class="completion"><span class="braille-bar" data-id="' + esc(p.id) + '">' + renderBar(p.state) + '</span><span class="pct">' + pct + '%</span></div>' +
           (ADMIN ? catsAdmin : catsPublic) +
+          (ADMIN ? adminActions : '') +
         '</div>' +
       '</div>';
   }
@@ -703,6 +740,8 @@
         return;
       }
       if (!ADMIN) return;
+      const cm = e.target.closest('.open-cmux');
+      if (cm) { e.preventDefault(); e.stopPropagation(); openInCmux(cm); return; }
       const tog = e.target.closest('.cat-toggle');
       if (tog) {
         const p = byId(tog.closest('.card').dataset.id), cat = tog.dataset.cat;
@@ -752,11 +791,31 @@
     ['mouseup', 'touchend', 'touchcancel', 'blur'].forEach(ev => window.addEventListener(ev, stopHold));
   }
 
+  // Open a project's local clone in cmux via the dev server. The server takes
+  // only the id, resolves the path itself, and falls back to the search root
+  // when there's no local clone.
+  function openInCmux(btn) {
+    const id = btn.dataset.id, orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'opening…';
+    fetch('/api/open', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    })
+      .then(r => r.json())
+      .then(res => {
+        const name = (res.path || '').replace(/\/+$/, '').split('/').pop() || '?';
+        if (res.ok) btn.textContent = res.resolved ? ('✓ ' + name) : ('no clone → ' + name);
+        else btn.textContent = '✕ ' + (res.error || 'failed');
+      })
+      .catch(() => { btn.textContent = '✕ offline'; })
+      .finally(() => setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 2400));
+  }
+
   function buildPayload() {
     return {
       categories: CATEGORIES,
       projects: projects.map(p => ({
-        id: p.id, title: p.title, url: p.url, img: p.img, alt: p.alt,
+        id: p.id, title: p.title, url: p.url, repo: p.repo, img: p.img, alt: p.alt,
         desc: p.desc, tag: p.tag, categories: p.categories, state: p.state
       }))
     };
