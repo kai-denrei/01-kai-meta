@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>kai-denrei</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -229,6 +232,74 @@
   .fbtn:hover { border-color: #3a3a50; color: #ccc; }
   .fbtn.active { color: #0a0a0f; background: #8b9dc3; border-color: #8b9dc3; font-weight: 600; }
 
+  /* ===== VFD dashboard — Marantz CD63SE vacuum-fluorescent homage ===== */
+  /* Big teal 7-seg counter (canvas, ported from laifu-keisan js/sevenseg.js)
+     for the live project count; everything else in a blocky teal display
+     font with a soft halo glow, on a deep CRT-black panel with scanlines. */
+  :root {
+    --vfd-font: 'Jersey 25', 'SF Mono', ui-monospace, monospace;
+    --vfd-teal: #1bf0c8;
+    --vfd-black: #050608;
+  }
+  .filters.vfd-panel {
+    position: relative;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.7rem;
+    flex-wrap: wrap;
+    padding: 1.15rem 1.4rem;
+    border-radius: 8px;
+    background: radial-gradient(130% 150% at 50% -10%, #0b1113 0%, var(--vfd-black) 68%);
+    border: 1px solid rgba(27, 240, 200, 0.18);
+    box-shadow: 0 0 30px rgba(27, 240, 200, 0.07), inset 0 0 46px rgba(0, 0, 0, 0.7);
+  }
+  /* CRT scanlines — black lines, multiply so only lit pixels darken into rows */
+  .filters.vfd-panel::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2; border-radius: 8px;
+    background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.17) 0 1px, transparent 1px 3px);
+    mix-blend-mode: multiply;
+  }
+  .vfd-panel > * { position: relative; z-index: 1; }
+
+  .vfd-counter { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+  #vfd-canvas { width: 224px; height: 132px; display: block; }
+  .vfd-counter .cap {
+    font-family: var(--vfd-font); font-size: 0.78rem; letter-spacing: 0.22em; color: var(--vfd-teal);
+    text-shadow: 0 0 4px rgba(27,240,200,0.85), 0 0 11px rgba(27,240,200,0.45);
+  }
+  .vfd-counter .of {
+    font-family: var(--vfd-font); font-size: 0.66rem; letter-spacing: 0.16em; color: rgba(27,240,200,0.55);
+    text-shadow: 0 0 6px rgba(27,240,200,0.3);
+  }
+
+  .vfd-rows { flex: 1 1 320px; display: flex; flex-direction: column; gap: 0.7rem; }
+  .vfd-panel .flabel {
+    font-family: var(--vfd-font); color: var(--vfd-teal); font-size: 0.9rem; letter-spacing: 0.16em;
+    text-transform: uppercase; min-width: 124px;
+    text-shadow: 0 0 4px rgba(27,240,200,0.7), 0 0 10px rgba(27,240,200,0.35);
+  }
+  .vfd-panel .fbtn {
+    font-family: var(--vfd-font); font-size: 0.98rem; letter-spacing: 0.05em;
+    color: rgba(27,240,200,0.42); background: transparent;
+    border: 1px solid rgba(27,240,200,0.18); border-radius: 3px; padding: 0.1rem 0.55rem;
+    text-shadow: 0 0 4px rgba(27,240,200,0.18); transition: color 0.14s, border-color 0.14s, text-shadow 0.14s, background 0.14s;
+  }
+  .vfd-panel .fbtn:hover {
+    color: rgba(27,240,200,0.85); border-color: rgba(27,240,200,0.42);
+    text-shadow: 0 0 6px rgba(27,240,200,0.5);
+  }
+  .vfd-panel .fbtn.active {
+    color: #ecfffb; background: rgba(27,240,200,0.08); border-color: var(--vfd-teal); font-weight: 400;
+    text-shadow: 0 0 5px rgba(27,240,200,0.95), 0 0 13px rgba(27,240,200,0.5);
+    box-shadow: 0 0 11px rgba(27,240,200,0.25), inset 0 0 9px rgba(27,240,200,0.12);
+  }
+
+  @media (max-width: 768px) {
+    .filters.vfd-panel { flex-direction: column; align-items: stretch; gap: 1.1rem; }
+    .vfd-counter { align-self: center; }
+  }
+
   /* ===== Carousel ===== */
   .carousel { max-width: 960px; margin: 0 auto 2rem; position: relative; }
   .carousel-track {
@@ -242,22 +313,27 @@
   }
   .slide a { display: block; text-decoration: none; color: inherit; }
   .slide img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; display: block; }
+  /* Title pinned to the top, completion braille pinned to the bottom — leaves
+     the vertical centre (where the prev/next arrows sit) clear of text. */
   .slide-overlay {
-    position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 1.2rem 1.4rem;
-    background: linear-gradient(to top, rgba(8,8,14,0.94) 0%, rgba(8,8,14,0.55) 42%, transparent 78%);
+    position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    background: linear-gradient(to bottom,
+      rgba(8,8,14,0.92) 0%, rgba(8,8,14,0.5) 20%, transparent 44%,
+      transparent 56%, rgba(8,8,14,0.5) 80%, rgba(8,8,14,0.95) 100%);
   }
+  .slide-top { display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start; }
+  .slide-bottom { display: flex; align-items: center; gap: 0.7rem; }
   .slide-overlay h2 { font-size: 1.15rem; color: #f0f0f5; font-weight: 600; letter-spacing: 0.01em; }
   .slide-overlay .desc {
-    font-size: 0.72rem; color: #aaa; margin-top: 0.3rem; max-width: 72%; line-height: 1.45;
+    font-size: 0.72rem; color: #b6b6c0; max-width: 72%; line-height: 1.45;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .slide-meta { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.7rem; }
-  .slide-meta .braille-bar { font-size: 1.2rem; }
+  .slide-bottom .braille-bar { font-size: 1.2rem; }
+  .slide-pct { font-size: 0.7rem; color: #ffdca8; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
   .slide-feat {
-    position: absolute; top: 0.8rem; left: 0.9rem; font-size: 0.55rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: #ffdca8; background: rgba(8,8,14,0.6); padding: 3px 8px;
-    border-radius: 3px; backdrop-filter: blur(4px); z-index: 2;
+    font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: #ffdca8;
+    background: rgba(8,8,14,0.55); padding: 3px 8px; border-radius: 3px; backdrop-filter: blur(4px);
   }
   .carousel-nav {
     position: absolute; top: calc(50% - 18px); transform: translateY(-50%); width: 36px; height: 36px;
@@ -306,6 +382,12 @@
     .slide-overlay h2 { font-size: 1rem; }
     .filter-row .flabel { min-width: auto; width: 100%; margin-bottom: 0.1rem; }
   }
+  /* Phone slides are short — drop the carousel desc so the vertically-centred
+     prev/next arrows sit over the clear image, never over text. Title stays
+     pinned top, completion braille pinned bottom. (Desc still shows on cards.) */
+  @media (max-width: 560px) {
+    .slide-overlay .desc { display: none; }
+  }
 </style>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -335,9 +417,16 @@
   Featured carousel fills with your highest-rated projects &mdash; assign completion in <a href="?admin">admin mode</a>.
 </div>
 
-<div class="filters" id="filters">
-  <div class="filter-row" id="cat-row"><span class="flabel">category</span></div>
-  <div class="filter-row" id="thr-row"><span class="flabel">completion</span></div>
+<div class="filters vfd-panel" id="filters">
+  <div class="vfd-counter">
+    <span class="cap">SHOWN</span>
+    <canvas id="vfd-canvas" aria-hidden="true"></canvas>
+    <span class="of vfd-of">OF 0</span>
+  </div>
+  <div class="vfd-rows">
+    <div class="filter-row" id="cat-row"><span class="flabel">category</span></div>
+    <div class="filter-row" id="thr-row"><span class="flabel">completion</span></div>
+  </div>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -378,6 +467,88 @@
     const s = stateAt(n);
     return s.glyphs.map((g, i) => '<span style="color:' + PALETTE[s.colors[i]] + '">' + g + '</span>').join('');
   }
+
+  // ---- VFD 7-segment counter (ported from laifu-keisan js/sevenseg.js) ----
+  // Thick rounded-tip hex segments with multi-pass glow + white hot-core, on
+  // the deep CRT-black panel. Drives the big teal project counter.
+  const SEG_CHAR = {
+    '0':['a','b','c','d','e','f'], '1':['b','c'], '2':['a','b','g','e','d'],
+    '3':['a','b','g','c','d'], '4':['f','g','b','c'], '5':['a','f','g','c','d'],
+    '6':['a','f','g','e','c','d'], '7':['a','b','c'], '8':['a','b','c','d','e','f','g'],
+    '9':['a','b','c','d','f','g'], '-':['g']
+  };
+  const SEG_ALL = ['a','b','c','d','e','f','g'];
+  const SEG = { thickness:0.17, aspect:1.62, gap:0.28, glowBlur:20, ghostAlpha:0.05, jitter:0.32, coreWhite:0.9, coreThickness:0.6 };
+  const VFD_TEAL = '#1bf0c8';
+  function vhash(k) { let h = (k|0)*2654435761; h ^= h>>>16; h = (h*2246822507)|0; h ^= h>>>13; h = (h*3266489909)|0; return ((h>>>0)&0xfff)/0xfff; }
+  function segEnds(seg, w, h, t) {
+    const ht = t/2, hh = h/2;
+    switch (seg) {
+      case 'a': return [t, ht, w-t, ht];
+      case 'b': return [w-ht, t, w-ht, hh-ht];
+      case 'c': return [w-ht, hh+ht, w-ht, h-t];
+      case 'd': return [t, h-ht, w-t, h-ht];
+      case 'e': return [ht, hh+ht, ht, h-t];
+      case 'f': return [ht, t, ht, hh-ht];
+      case 'g': return [t, hh, w-t, hh];
+    }
+    return [0,0,0,0];
+  }
+  function vhex(ctx, x1, y1, x2, y2, th) {
+    const dx = x2-x1, dy = y2-y1, len = Math.hypot(dx, dy);
+    if (len < 0.001) return;
+    const ux = dx/len, uy = dy/len, px = -uy, py = ux, h = th/2;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x1+ux*h-px*h, y1+uy*h-py*h);
+    ctx.lineTo(x2-ux*h-px*h, y2-uy*h-py*h);
+    ctx.lineTo(x2, y2);
+    ctx.lineTo(x2-ux*h+px*h, y2-uy*h+py*h);
+    ctx.lineTo(x1+ux*h+px*h, y1+uy*h+py*h);
+    ctx.closePath();
+  }
+  function vseg(ctx, x1, y1, x2, y2, th, color, bright, on) {
+    if (!on) {
+      ctx.shadowBlur = 0; ctx.globalAlpha = SEG.ghostAlpha; ctx.fillStyle = color;
+      vhex(ctx, x1, y1, x2, y2, th*0.92); ctx.fill(); ctx.globalAlpha = 1; return;
+    }
+    ctx.fillStyle = color; ctx.shadowColor = color;
+    ctx.globalAlpha = 0.55*bright; ctx.shadowBlur = SEG.glowBlur; vhex(ctx, x1, y1, x2, y2, th); ctx.fill();
+    ctx.globalAlpha = Math.min(1, bright); ctx.shadowBlur = 0; ctx.fill();
+    if (SEG.coreWhite > 0) {
+      ctx.globalAlpha = Math.min(1, SEG.coreWhite*bright); ctx.fillStyle = '#ffffff';
+      vhex(ctx, x1, y1, x2, y2, th*SEG.coreThickness); ctx.fill();
+    }
+    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+  }
+  function vdigit(ctx, ch, x, y, w, h, color, seed) {
+    const t = w*SEG.thickness, on = new Set(SEG_CHAR[ch] || []);
+    ctx.save(); ctx.translate(x, y);
+    for (let i = 0; i < SEG_ALL.length; i++) {
+      const [x1, y1, x2, y2] = segEnds(SEG_ALL[i], w, h, t);
+      const b = 1 - SEG.jitter*vhash(seed*7 + i);
+      vseg(ctx, x1, y1, x2, y2, t, color, b, on.has(SEG_ALL[i]));
+    }
+    ctx.restore();
+  }
+  let vfdCount = 0;
+  function drawCounter(value) {
+    const cv = document.getElementById('vfd-canvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const W = cv.clientWidth || 150, H = cv.clientHeight || 84;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    const text = String(value), n = text.length, pad = 18;
+    let dh = H - pad*2, dw = dh/SEG.aspect, gp = dw*SEG.gap, tw = n*dw + (n-1)*gp;
+    const maxW = W - pad*2;
+    if (tw > maxW) { const s = maxW/tw; dw *= s; dh *= s; gp = dw*SEG.gap; tw = n*dw + (n-1)*gp; }
+    let x = (W - tw)/2; const y = (H - dh)/2;
+    for (let j = 0; j < n; j++) { vdigit(ctx, text[j], x, y, dw, dh, VFD_TEAL, j*17 + 3); x += dw + gp; }
+  }
+  function renderCounter(n) { vfdCount = n; drawCounter(n); }
 
   // ---- Data + localStorage overrides ----
   let CATEGORIES = [], projects = [];
@@ -444,7 +615,9 @@
     };
     catRow.appendChild(mk('all', true, () => setCat(null)));
     CATEGORIES.forEach(c => catRow.appendChild(mk(c, false, () => setCat(c))));
-    [['all', 0], ['≥25%', 25], ['≥50%', 50], ['≥75%', 75], ['100%', 100]].forEach(([lab, v], i) =>
+    // Threshold labels use only glyphs present in the blocky VFD font (Jersey 25
+    // has no ≥); the trailing + reads as "and up" on the panel.
+    [['ALL', 0], ['25+', 25], ['50+', 50], ['75+', 75], ['100', 100]].forEach(([lab, v], i) =>
       thrRow.appendChild(mk(lab, i === 0, () => setThr(v, lab))));
   }
   function setCat(c) { fCat = c; markActive('cat-row', c === null ? 'all' : c); applyFilters(); }
@@ -453,14 +626,18 @@
     document.querySelectorAll('#' + rowId + ' .fbtn').forEach(b => b.classList.toggle('active', b.dataset.label === label));
   }
   function applyFilters() {
+    let shown = 0;
     document.querySelectorAll('#grid .card').forEach(card => {
       const p = byId(card.dataset.id), pct = percentForState(p.state);
       const okCat = !fCat || p.categories.includes(fCat);
       const okThr = pct >= fThr;
       const hay = (p.title + ' ' + p.desc + ' ' + p.tag + ' ' + p.categories.join(' ')).toLowerCase();
       const okSearch = !fSearch || hay.includes(fSearch);
-      card.classList.toggle('hidden', !(okCat && okThr && okSearch));
+      const visible = okCat && okThr && okSearch;
+      card.classList.toggle('hidden', !visible);
+      if (visible) shown++;
     });
+    renderCounter(shown);
   }
 
   // ---- Carousel ----
@@ -475,12 +652,17 @@
     document.getElementById('ctrack').innerHTML = feat.map(p =>
       '<div class="slide">' +
         '<a href="' + esc(p.url) + '">' +
-          '<span class="slide-feat">featured · ' + percentForState(p.state) + '%</span>' +
           '<img src="' + esc(p.img) + '?v=d1b55b99" alt="' + esc(p.alt) + '">' +
           '<div class="slide-overlay">' +
-            '<h2>' + esc(p.title) + '</h2>' +
-            '<p class="desc">' + esc(p.desc) + '</p>' +
-            '<div class="slide-meta"><span class="braille-bar">' + renderBar(p.state) + '</span></div>' +
+            '<div class="slide-top">' +
+              '<span class="slide-feat">featured</span>' +
+              '<h2>' + esc(p.title) + '</h2>' +
+              '<p class="desc">' + esc(p.desc) + '</p>' +
+            '</div>' +
+            '<div class="slide-bottom">' +
+              '<span class="braille-bar">' + renderBar(p.state) + '</span>' +
+              '<span class="slide-pct">' + percentForState(p.state) + '%</span>' +
+            '</div>' +
           '</div>' +
         '</a>' +
       '</div>'
@@ -672,6 +854,11 @@
     wireGrid();
     buildCarousel();
     setupAdmin();
+    // VFD counter: total is fixed; "shown" starts equal to total (no filter).
+    const ofEl = document.querySelector('.vfd-of');
+    if (ofEl) ofEl.textContent = 'OF ' + projects.length;
+    renderCounter(projects.length);
+    window.addEventListener('resize', () => drawCounter(vfdCount));
   }
   init();
 })();
