@@ -262,15 +262,11 @@
   }
   .vfd-panel > * { position: relative; z-index: 1; }
 
-  .vfd-counter { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
-  #vfd-canvas { width: 224px; height: 132px; display: block; }
-  .vfd-counter .cap {
-    font-family: var(--vfd-font); font-size: 0.78rem; letter-spacing: 0.22em; color: var(--vfd-teal);
-    text-shadow: 0 0 4px rgba(27,240,200,0.85), 0 0 11px rgba(27,240,200,0.45);
-  }
+  .vfd-counter { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
+  #vfd-canvas { width: 184px; height: 106px; display: block; }
   .vfd-counter .of {
-    font-family: var(--vfd-font); font-size: 0.66rem; letter-spacing: 0.16em; color: rgba(27,240,200,0.55);
-    text-shadow: 0 0 6px rgba(27,240,200,0.3);
+    font-family: var(--vfd-font); font-size: 0.62rem; letter-spacing: 0.1em; white-space: nowrap;
+    color: rgba(27,240,200,0.55); text-shadow: 0 0 6px rgba(27,240,200,0.3);
   }
 
   .vfd-rows { flex: 1 1 320px; display: flex; flex-direction: column; gap: 0.7rem; }
@@ -387,6 +383,10 @@
      pinned top, completion braille pinned bottom. (Desc still shows on cards.) */
   @media (max-width: 560px) {
     .slide-overlay .desc { display: none; }
+    #vfd-canvas { width: 158px; height: 92px; }
+    .filters.vfd-panel { padding: 0.85rem 1rem; gap: 0.7rem; }
+    .vfd-rows { gap: 0.55rem; }
+    .vfd-counter .of { font-size: 0.58rem; }
   }
 </style>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -419,13 +419,12 @@
 
 <div class="filters vfd-panel" id="filters">
   <div class="vfd-counter">
-    <span class="cap">SHOWN</span>
     <canvas id="vfd-canvas" aria-hidden="true"></canvas>
-    <span class="of vfd-of">OF 0</span>
+    <span class="of vfd-of">OF 31 RESEARCH PROJECTS</span>
   </div>
   <div class="vfd-rows">
     <div class="filter-row" id="cat-row"><span class="flabel">category</span></div>
-    <div class="filter-row" id="thr-row"><span class="flabel">completion</span></div>
+    <div class="filter-row" id="thr-row"><span class="flabel">completion%</span></div>
   </div>
 </div>
 
@@ -478,7 +477,7 @@
     '9':['a','b','c','d','f','g'], '-':['g']
   };
   const SEG_ALL = ['a','b','c','d','e','f','g'];
-  const SEG = { thickness:0.17, aspect:1.62, gap:0.28, glowBlur:20, ghostAlpha:0.05, jitter:0.32, coreWhite:0.9, coreThickness:0.6 };
+  const SEG = { thickness:0.17, aspect:1.62, gap:0.28, glowBlur:16, ghostAlpha:0.05, jitter:0.32, coreWhite:0.9, coreThickness:0.6 };
   const VFD_TEAL = '#1bf0c8';
   function vhash(k) { let h = (k|0)*2654435761; h ^= h>>>16; h = (h*2246822507)|0; h ^= h>>>13; h = (h*3266489909)|0; return ((h>>>0)&0xfff)/0xfff; }
   function segEnds(seg, w, h, t) {
@@ -541,7 +540,7 @@
     cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, W, H);
-    const text = String(value), n = text.length, pad = 18;
+    const text = String(value), n = text.length, pad = 16;
     let dh = H - pad*2, dw = dh/SEG.aspect, gp = dw*SEG.gap, tw = n*dw + (n-1)*gp;
     const maxW = W - pad*2;
     if (tw > maxW) { const s = maxW/tw; dw *= s; dh *= s; gp = dw*SEG.gap; tw = n*dw + (n-1)*gp; }
@@ -645,10 +644,11 @@
   function buildCarousel() {
     const carousel = document.getElementById('carousel');
     const hint = document.getElementById('carousel-hint');
-    const pool = projects.filter(p => p.state > 0).sort((a, b) => b.state - a.state).slice(0, 10);
+    // Feature every project above 75% completion (shuffled order each load).
+    const pool = projects.filter(p => percentForState(p.state) > 75).sort((a, b) => b.state - a.state);
     if (pool.length === 0) { carousel.hidden = true; hint.hidden = false; return; }
     hint.hidden = true; carousel.hidden = false;
-    const feat = shuffle(pool).slice(0, 5);
+    const feat = shuffle(pool);
     document.getElementById('ctrack').innerHTML = feat.map(p =>
       '<div class="slide">' +
         '<a href="' + esc(p.url) + '">' +
@@ -856,7 +856,7 @@
     setupAdmin();
     // VFD counter: total is fixed; "shown" starts equal to total (no filter).
     const ofEl = document.querySelector('.vfd-of');
-    if (ofEl) ofEl.textContent = 'OF ' + projects.length;
+    if (ofEl) ofEl.textContent = 'OF ' + projects.length + ' RESEARCH PROJECTS';
     renderCounter(projects.length);
     window.addEventListener('resize', () => drawCounter(vfdCount));
   }
