@@ -355,6 +355,7 @@
       "id": "breathing-text",
       "title": "Breathing Text",
       "url": "https://www.grapplingprimitives.com/modules/breathing/",
+      "repo": "jelaludo/grapplingprimitives",
       "img": "screenshots/breathing-text.webp",
       "alt": "Breathing Text",
       "desc": "Characters scale and fade on a breathing cycle",
@@ -369,6 +370,7 @@
       "id": "text-string",
       "title": "Text String",
       "url": "https://kai-denrei.github.io/textstring/",
+      "repo": "kai-denrei/textstring",
       "img": "screenshots/text-string.webp",
       "alt": "Text String",
       "desc": "Characters on a physics chain -- drag, gravity, collisions",
@@ -414,6 +416,7 @@
       "id": "grappling-meta",
       "title": "Grappling Meta",
       "url": "https://www.grapplingprimitives.com/modules/grapplingstats/",
+      "repo": "jelaludo/grapplingprimitives",
       "img": "screenshots/grappling-meta.webp",
       "alt": "Grappling Meta",
       "desc": "KO/TKO/Submission evolution -- WNO, ADCC, UFC, nogi stats",
@@ -428,6 +431,7 @@
       "id": "grappling-primitives",
       "title": "Grappling Primitives",
       "url": "https://www.grapplingprimitives.com",
+      "repo": "jelaludo/grapplingprimitives",
       "img": "screenshots/grappling-primitives.webp",
       "alt": "Grappling Primitives",
       "desc": "Articles and tools for grappling arts",
@@ -442,6 +446,7 @@
       "id": "jelaludo",
       "title": "Jelaludo",
       "url": "https://jelaludo.github.io/01-jela-meta/",
+      "repo": "jelaludo/01-jela-meta",
       "img": "screenshots/jelaludo.webp",
       "alt": "Jelaludo",
       "desc": "Gerald's projects",
@@ -457,6 +462,20 @@
         "Gaming"
       ],
       "state": 18
+    },
+    {
+      "id": "animation-primitives",
+      "title": "Animation Primitives",
+      "url": "https://kai-denrei.github.io/animation-primitives/",
+      "img": "screenshots/animation-primitives.webp",
+      "alt": "Animation Primitives",
+      "desc": "The twelve principles of animation as the generative math that makes them move — curve, motion and live code locked to one clock; vanilla, deterministic, primitives only",
+      "tag": "reference / animation",
+      "categories": [
+        "Gaming",
+        "Misc"
+      ],
+      "state": 14
     }
   ]
 }
