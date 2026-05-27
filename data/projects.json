@@ -476,6 +476,23 @@
         "Misc"
       ],
       "state": 14
+    },
+    {
+      "id": "oskar-procedure",
+      "title": "Oskar Procedure",
+      "url": "https://kai-denrei.github.io/oskar-procedure/",
+      "img": "screenshots/oskar-procedure.webp",
+      "alt": "Oskar Procedure",
+      "desc": "A procedural organic quad-grid generator — teal cells bloom across a softly deforming wireframe lattice; regenerate for a fresh arrangement each run",
+      "tag": "generative / procedural",
+      "categories": [
+        "UX",
+        "Gaming",
+        "Misc",
+        "Visual Effects",
+        "Tools"
+      ],
+      "state": 27
     }
   ]
 }
