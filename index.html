@@ -45,24 +45,49 @@
     color: #666;
   }
 
+  .search-wrap {
+    position: relative; display: inline-block; width: 100%; max-width: 360px;
+    margin-top: 1rem; text-align: left;
+  }
   .search {
-    margin-top: 1rem;
     width: 100%;
-    max-width: 360px;
     padding: 0.55rem 0.85rem;
     background: #12121a;
     border: 1px solid #1e1e2a;
     border-radius: 4px;
     color: #c8c8d0;
     font-family: inherit;
-    font-size: 0.85rem;
+    /* 16px keeps iOS Safari from auto-zooming the page on focus; */
+    /* touch-action: manipulation suppresses double-tap-to-zoom on the field. */
+    font-size: 16px;
     letter-spacing: 0.02em;
     outline: none;
+    touch-action: manipulation;
     transition: border-color 0.15s;
   }
 
   .search::placeholder { color: #555; }
   .search:focus { border-color: #3a3a50; }
+
+  /* Typeahead suggestions */
+  .search-suggest {
+    list-style: none; position: absolute; top: calc(100% + 5px); left: 0; right: 0; z-index: 40;
+    background: #12121a; border: 1px solid #2a2a3a; border-radius: 6px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.55); max-height: 60vh; overflow-y: auto; text-align: left;
+  }
+  .search-suggest li {
+    display: flex; align-items: center; gap: 0.6rem; padding: 0.45rem 0.6rem; cursor: pointer;
+    font-size: 0.82rem; color: #c8c8d0; border-bottom: 1px solid #1a1a26;
+  }
+  .search-suggest li:last-child { border-bottom: none; }
+  .search-suggest li:hover, .search-suggest li.active { background: #1b1b28; }
+  .search-suggest .s-thumb { width: 36px; height: 24px; object-fit: cover; border-radius: 3px; flex: 0 0 auto; background: #0e0e16; }
+  .search-suggest .s-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #e6e6ee; }
+  .search-suggest .s-title mark { background: transparent; color: #8b9dc3; font-weight: 700; }
+  .search-suggest .s-meta {
+    margin-left: auto; flex: 0 0 auto; font-size: 0.58rem; color: #666;
+    letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+  }
 
   .card.hidden { display: none; }
 
@@ -419,7 +444,10 @@
     <h1>kai-denrei projects</h1>
     <span id="cb-badge-slot"></span>
   </div>
-  <input type="search" class="search" id="search" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <div class="search-wrap">
+    <input type="search" class="search" id="search" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <ul class="search-suggest" id="search-suggest" hidden></ul>
+  </div>
 </header>
 
 <div class="carousel" id="carousel" hidden>
@@ -882,9 +910,58 @@
     saveToDisk();
   }
 
-  // ---- Search ----
+  // ---- Search + typeahead suggestions ----
   const search = document.getElementById('search');
-  search.addEventListener('input', () => { fSearch = search.value.trim().toLowerCase(); applyFilters(); });
+  const suggest = document.getElementById('search-suggest');
+  let sugItems = [], sugActive = -1;
+
+  function highlightMatch(title, q) {
+    const i = title.toLowerCase().indexOf(q);
+    if (i < 0) return esc(title);
+    return esc(title.slice(0, i)) + '<mark>' + esc(title.slice(i, i + q.length)) + '</mark>' + esc(title.slice(i + q.length));
+  }
+  function hideSuggest() { suggest.hidden = true; suggest.innerHTML = ''; sugItems = []; sugActive = -1; }
+  function buildSuggestions(q) {
+    if (!q) return hideSuggest();
+    // Rank: title prefix > title substring > any-field substring.
+    const ranked = projects.map(p => {
+      const t = p.title.toLowerCase();
+      const hay = (p.title + ' ' + p.desc + ' ' + p.tag + ' ' + p.categories.join(' ')).toLowerCase();
+      const score = t.startsWith(q) ? 0 : t.includes(q) ? 1 : hay.includes(q) ? 2 : -1;
+      return { p, score };
+    }).filter(x => x.score >= 0)
+      .sort((a, b) => a.score - b.score || a.p.title.localeCompare(b.p.title))
+      .slice(0, 8);
+    if (!ranked.length) return hideSuggest();
+    sugItems = ranked.map(x => x.p); sugActive = -1;
+    suggest.innerHTML = sugItems.map((p, i) =>
+      '<li data-i="' + i + '" data-url="' + esc(p.url) + '">' +
+        '<img class="s-thumb" src="' + esc(p.img) + '?v=' + cb + '" alt="" loading="lazy">' +
+        '<span class="s-title">' + highlightMatch(p.title, q) + '</span>' +
+        '<span class="s-meta">' + esc(p.categories[0] || p.tag || '') + '</span>' +
+      '</li>').join('');
+    suggest.hidden = false;
+  }
+  function markSug() { suggest.querySelectorAll('li').forEach((li, i) => li.classList.toggle('active', i === sugActive)); }
+  function openSuggestion(i) { const p = sugItems[i]; if (p) window.location.href = p.url; }
+
+  search.addEventListener('input', () => {
+    fSearch = search.value.trim().toLowerCase();
+    applyFilters();
+    buildSuggestions(fSearch);
+  });
+  search.addEventListener('focus', () => { if (fSearch) buildSuggestions(fSearch); });
+  search.addEventListener('blur', () => setTimeout(hideSuggest, 150));
+  search.addEventListener('keydown', (e) => {
+    if (suggest.hidden) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); sugActive = Math.min(sugItems.length - 1, sugActive + 1); markSug(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); sugActive = Math.max(0, sugActive - 1); markSug(); }
+    else if (e.key === 'Enter') { if (sugItems.length) { e.preventDefault(); openSuggestion(sugActive >= 0 ? sugActive : 0); } }
+    else if (e.key === 'Escape') { hideSuggest(); }
+  });
+  suggest.addEventListener('click', (e) => {
+    const li = e.target.closest('li'); if (li) openSuggestion(+li.dataset.i);
+  });
 
   // ---- Init ----
   async function init() {
