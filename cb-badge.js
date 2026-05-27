@@ -58,13 +58,18 @@
   hexEl.style.cssText = "margin-left:6px;color:#bbb";
   badge.appendChild(hexEl);
 
-  // Click to copy the token.
+  // Click: check for a new version (PWA) if the page wired up the hook;
+  // always copy the token too. Falls back to a copy-confirm flash otherwise.
   badge.style.cursor = "pointer";
-  badge.title = "click to copy cache-bust token";
+  badge.title = "click: check for updates (copies token)";
   badge.addEventListener("click", () => {
     navigator.clipboard?.writeText(hex);
-    hexEl.style.color = "#5dcaa5";
-    setTimeout(() => { hexEl.style.color = "#bbb"; }, 600);
+    if (typeof window.cbCheckForUpdate === "function") {
+      window.cbCheckForUpdate(hexEl);
+    } else {
+      hexEl.style.color = "#5dcaa5";
+      setTimeout(() => { hexEl.style.color = "#bbb"; }, 600);
+    }
   });
 
   // Mount once DOM is ready — into the slot if present, else the page body.

@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>kai-denrei</title>
+<!-- PWA: installable + offline, with an update prompt (see sw.js) -->
+<meta name="theme-color" content="#0a0a0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="kai-denrei">
+<link rel="manifest" href="manifest.webmanifest?v=51fbd7c0">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=51fbd7c0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap">
@@ -259,6 +266,25 @@
   }
   .repo-link:hover { color: #c8d4ee; border-color: #3a4258; }
 
+  /* ===== PWA update toast ===== */
+  #sw-update-toast {
+    position: fixed; left: 50%; bottom: 1.1rem; transform: translateX(-50%); z-index: 200;
+    display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.7rem 0.55rem 0.95rem;
+    background: #12121a; border: 1px solid #2a2f40; border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6); color: #c8d0e0; font-size: 0.8rem;
+    max-width: calc(100vw - 1.5rem);
+  }
+  #sw-update-toast .sw-update-msg { letter-spacing: 0.02em; white-space: nowrap; }
+  #sw-update-toast button { font-family: inherit; cursor: pointer; border-radius: 5px; }
+  #sw-update-toast .sw-update-refresh {
+    font-size: 0.78rem; color: #0a0a0f; background: #1bf0c8; border: 1px solid #1bf0c8;
+    padding: 0.32rem 0.7rem; font-weight: 600;
+  }
+  #sw-update-toast .sw-update-refresh:hover { background: #5dffe0; }
+  #sw-update-toast .sw-update-dismiss {
+    font-size: 1rem; line-height: 1; color: #888; background: transparent; border: none; padding: 0 0.25rem;
+  }
+
   /* ===== Filter bar ===== */
   .filters { max-width: 960px; margin: 0 auto 1.5rem; display: flex; flex-direction: column; gap: 0.55rem; }
   .filter-row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
@@ -433,9 +459,9 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="cb" content="d1b55b99">
-  <link rel="icon" type="image/svg+xml" href="cb-shapes/17.svg?v=d1b55b99">
-  <script src="cb-badge.js?v=d1b55b99" defer></script>
+  <meta name="cb" content="51fbd7c0">
+  <link rel="icon" type="image/svg+xml" href="cb-shapes/17.svg?v=51fbd7c0">
+  <script src="cb-badge.js?v=51fbd7c0" defer></script>
 </head>
 <body>
 
@@ -643,7 +669,7 @@
       '<div class="card" data-id="' + esc(p.id) + '">' +
         '<span class="deep-link" data-url="' + esc(p.url) + '">link</span>' +
         '<a href="' + esc(p.url) + '">' +
-          '<div class="thumb"><img src="' + esc(p.img) + '?v=d1b55b99" alt="' + esc(p.alt) + '" loading="lazy"></div>' +
+          '<div class="thumb"><img src="' + esc(p.img) + '?v=51fbd7c0" alt="' + esc(p.alt) + '" loading="lazy"></div>' +
           '<div class="info">' +
             '<h2>' + esc(p.title) + '</h2>' +
             '<p class="desc">' + esc(p.desc) + '</p>' +
@@ -717,7 +743,7 @@
     document.getElementById('ctrack').innerHTML = feat.map(p =>
       '<div class="slide">' +
         '<a href="' + esc(p.url) + '">' +
-          '<img src="' + esc(p.img) + '?v=d1b55b99" alt="' + esc(p.alt) + '">' +
+          '<img src="' + esc(p.img) + '?v=51fbd7c0" alt="' + esc(p.alt) + '">' +
           '<div class="slide-overlay">' +
             '<div class="slide-top">' +
               '<span class="slide-feat">featured</span>' +
@@ -936,7 +962,7 @@
     sugItems = ranked.map(x => x.p); sugActive = -1;
     suggest.innerHTML = sugItems.map((p, i) =>
       '<li data-i="' + i + '" data-url="' + esc(p.url) + '">' +
-        '<img class="s-thumb" src="' + esc(p.img) + '?v=' + cb + '" alt="" loading="lazy">' +
+        '<img class="s-thumb" src="' + esc(p.img) + '?v=51fbd7c0" alt="" loading="lazy">' +
         '<span class="s-title">' + highlightMatch(p.title, q) + '</span>' +
         '<span class="s-meta">' + esc(p.categories[0] || p.tag || '') + '</span>' +
       '</li>').join('');
@@ -997,6 +1023,75 @@
     window.addEventListener('resize', () => drawCounter(vfdCount));
   }
   init();
+})();
+</script>
+
+<script>
+// ---- PWA: register the service worker + update-toast flow ----
+// Registered as ./sw.js?v=<cb token> so bumping the token (scripts/bust.sh on
+// deploy) makes the browser fetch a new worker -> "New version" toast. The data
+// is network-first inside the SW, so online users always get the latest cards.
+(() => {
+  if (!("serviceWorker" in navigator)) return;
+  const cb = (document.querySelector('meta[name="cb"]') || {}).content || "";
+  const SW_URL = "./sw.js" + (cb ? "?v=" + cb : "");
+
+  let _refreshing = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (_refreshing) return; _refreshing = true; window.location.reload();
+  });
+
+  function showUpdateToast(reg) {
+    if (document.getElementById("sw-update-toast")) return;
+    const t = document.createElement("div");
+    t.id = "sw-update-toast"; t.setAttribute("role", "status"); t.setAttribute("aria-live", "polite");
+    t.innerHTML = '<span class="sw-update-msg">New version available</span>' +
+      '<button type="button" class="sw-update-refresh">Refresh</button>' +
+      '<button type="button" class="sw-update-dismiss" aria-label="Dismiss">&times;</button>';
+    document.body.appendChild(t);
+    t.querySelector(".sw-update-refresh").onclick = () => {
+      if (reg.waiting) reg.waiting.postMessage({ type: "SKIP_WAITING" });
+      // controllerchange (above) reloads once the new worker takes over.
+    };
+    t.querySelector(".sw-update-dismiss").onclick = () => t.remove();
+  }
+
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(SW_URL).then((reg) => {
+      window.__swReg = reg;
+      if (reg.waiting && navigator.serviceWorker.controller) showUpdateToast(reg);
+      reg.addEventListener("updatefound", () => {
+        const nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener("statechange", () => {
+          if (nw.state === "installed" && navigator.serviceWorker.controller) showUpdateToast(reg);
+        });
+      });
+    }).catch(() => {});
+  });
+
+  // Manual "check for a new version" — invoked by tapping the cb badge (the
+  // three little shapes). Forces an update check and reports in the badge.
+  window.cbCheckForUpdate = async (labelEl) => {
+    const setLabel = (txt, col) => {
+      if (!labelEl) return;
+      if (!("cbOrig" in labelEl.dataset)) labelEl.dataset.cbOrig = labelEl.textContent;
+      labelEl.textContent = txt; if (col) labelEl.style.color = col;
+      clearTimeout(labelEl._cbT);
+      labelEl._cbT = setTimeout(() => { labelEl.textContent = labelEl.dataset.cbOrig; labelEl.style.color = "#bbb"; }, 2000);
+    };
+    const reg = window.__swReg ||
+      (navigator.serviceWorker && await navigator.serviceWorker.getRegistration());
+    if (!reg) { setLabel("no sw", "#c86a6a"); return; }
+    setLabel("checking…", "#dcb46d");
+    try {
+      await reg.update();
+      setTimeout(() => {
+        if (reg.waiting || reg.installing) { setLabel("● new version", "#ffdca8"); showUpdateToast(reg); }
+        else setLabel("✓ up to date", "#5dcaa5");
+      }, 900);
+    } catch (e) { setLabel("check failed", "#c86a6a"); }
+  };
 })();
 </script>
 
