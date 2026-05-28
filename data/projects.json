@@ -493,6 +493,21 @@
         "Tools"
       ],
       "state": 27
+    },
+    {
+      "id": "n7-automata",
+      "title": "N7 Automata",
+      "url": "https://kai-denrei.github.io/n7-automata/",
+      "img": "screenshots/n7-automata.webp",
+      "alt": "N7 Automata",
+      "desc": "Seven-element cyclic cellular automaton on a hex grid — each element preys on x+1, x+2, x+4 (a Paley tournament), so no coalition ever wins; live palettes, rules and a dominance wheel",
+      "tag": "simulation / cellular-automata",
+      "categories": [
+        "Gaming",
+        "Visual Effects",
+        "Misc"
+      ],
+      "state": 18
     }
   ]
 }
