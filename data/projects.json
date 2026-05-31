@@ -508,6 +508,21 @@
         "Misc"
       ],
       "state": 18
+    },
+    {
+      "id": "mandala_cymatics",
+      "title": "Mandala Cymatics",
+      "url": "https://kai-denrei.github.io/mandala_cymatics/",
+      "img": "screenshots/mandala_cymatics.webp",
+      "alt": "Mandala Cymatics",
+      "desc": "Mic-reactive cymatic mandala — live audio drives a vibrating sand-mandala field; tunable jolt, settle, decay, jitter and repel",
+      "tag": "audio-reactive / cymatics",
+      "categories": [
+        "UX",
+        "Visual Effects",
+        "Misc"
+      ],
+      "state": 29
     }
   ]
 }
