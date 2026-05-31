@@ -523,6 +523,21 @@
         "Misc"
       ],
       "state": 29
+    },
+    {
+      "id": "periodic-table-of-play",
+      "title": "Game Loops",
+      "url": "https://kai-denrei.github.io/periodic-table-of-play/",
+      "img": "screenshots/periodic-table-of-play.webp",
+      "alt": "Game Loops",
+      "desc": "Every game mechanic broken into a few reads and writes over typed state-stores — a scroll essay that takes Catch, Tag and chess captures apart, then rebuilds famous loops from a library of ~250 verb primitives",
+      "tag": "essay / game-design",
+      "categories": [
+        "Gaming",
+        "Cogita",
+        "Misc"
+      ],
+      "state": 18
     }
   ]
 }
