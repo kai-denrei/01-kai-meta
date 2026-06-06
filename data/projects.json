@@ -538,6 +538,21 @@
         "Misc"
       ],
       "state": 18
+    },
+    {
+      "id": "dexipurei-galore",
+      "title": "Dexipurei Galore",
+      "url": "https://kai-denrei.github.io/dexipurei-galore/",
+      "img": "screenshots/dexipurei-galore.webp",
+      "alt": "Dexipurei Galore",
+      "desc": "Type anything and watch it render across a gallery of display simulators — dot-matrix LED, seven-segment, 16-segment starburst, nixie tube, vacuum fluorescent, split-flap — dimmed where a format can't show it, tap any one to go full-screen",
+      "tag": "tool / display sim",
+      "categories": [
+        "UX",
+        "Visual Effects",
+        "Tools"
+      ],
+      "state": 29
     }
   ]
 }
