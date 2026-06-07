@@ -553,6 +553,20 @@
         "Tools"
       ],
       "state": 29
+    },
+    {
+      "id": "geejisuraidaa",
+      "title": "Geejisuraidaa",
+      "url": "https://kai-denrei.github.io/geejisuraidaa/",
+      "img": "screenshots/geejisuraidaa.webp",
+      "alt": "Geejisuraidaa",
+      "desc": "Eight input controls bound to a single value through one shared contract — drag the scrub field, log slider, bipolar fader, XY pad, knob, arc or ruler and every gauge, segment readout and unicode bar moves in lockstep",
+      "tag": "tool / ui-controls",
+      "categories": [
+        "UX",
+        "Visual Effects"
+      ],
+      "state": 27
     }
   ]
 }
