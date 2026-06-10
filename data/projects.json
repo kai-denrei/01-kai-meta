@@ -567,6 +567,20 @@
         "Visual Effects"
       ],
       "state": 27
+    },
+    {
+      "id": "fude-calligraphy",
+      "title": "FUDE",
+      "url": "https://kai-denrei.github.io/fude-calligraphy/",
+      "img": "screenshots/fude-calligraphy.webp",
+      "alt": "FUDE",
+      "desc": "Virtual sumi-e brush — type a word or kanji and watch it painted in wet black ink on washi, with stroke-order playback, skeleton-bone guides, horizontal layout, rotation and PNG export, plus an english→kanji browse list for practice",
+      "tag": "tool / calligraphy",
+      "categories": [
+        "Tools",
+        "Visual Effects"
+      ],
+      "state": 20
     }
   ]
 }
