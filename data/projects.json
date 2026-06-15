@@ -581,6 +581,22 @@
         "Visual Effects"
       ],
       "state": 20
+    },
+    {
+      "id": "sprite-lab",
+      "title": "Sprite Lab",
+      "url": "https://kai-denrei.github.io/sprite-lab/#mr_blue/shooter",
+      "img": "screenshots/sprite-lab.webp",
+      "alt": "Sprite Lab",
+      "desc": "Drop a sprite sheet, audition its animation cycles, and audit loop seams, registration and centroid drift — with onion-skinning, comparison overlay and clip chaining, then export a reusable engine + manifest bundle, GIF or code. No build, runs in-browser",
+      "tag": "tool / sprite animation",
+      "categories": [
+        "Gaming",
+        "UX",
+        "Visual Effects",
+        "Tools"
+      ],
+      "state": 18
     }
   ]
 }
