@@ -597,6 +597,20 @@
         "Tools"
       ],
       "state": 18
+    },
+    {
+      "id": "pazorukore",
+      "title": "PazoruKore",
+      "url": "https://kai-denrei.github.io/pazorukore/",
+      "img": "screenshots/pazorukore.webp",
+      "alt": "PazoruKore",
+      "desc": "パズルコア — grid number puzzle in a CRT seven-segment skin: place glowing digits across a teal lattice against the clock, chase score and stars over ten stages, with undo, redo, hints and a perfect-run achievement",
+      "tag": "PWA / puzzle",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 29
     }
   ]
 }
