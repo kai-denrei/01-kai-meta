@@ -611,6 +611,20 @@
         "Visual Effects"
       ],
       "state": 29
+    },
+    {
+      "id": "brumachlys-ii",
+      "title": "Brumachlys II",
+      "url": "https://kai-denrei.github.io/brumachlys-ii/",
+      "img": "screenshots/brumachlys-ii.webp",
+      "alt": "Brumachlys II",
+      "desc": "WEGO wargame on a parchment node-map — queue a turn of orders, commit, then both armies resolve at once. Conquest or skirmish across eight maps against five AI temperaments, with credits, production and round limits",
+      "tag": "game / WEGO strategy",
+      "categories": [
+        "Gaming",
+        "Misc"
+      ],
+      "state": 11
     }
   ]
 }
