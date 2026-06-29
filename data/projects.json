@@ -625,6 +625,20 @@
         "Misc"
       ],
       "state": 11
+    },
+    {
+      "id": "dorje-sempa",
+      "title": "Dorje Sempa",
+      "url": "https://kai-denrei.github.io/dorje-sempa/",
+      "img": "screenshots/dorje-sempa.webp",
+      "alt": "Dorje Sempa",
+      "desc": "A calm, scholarly guide to the Karma Kagyu lineage and Diamond Way Buddhism — the Vajrayāna mapped from ground to fruition, with Tibetan script set as a typographic art object, plus recitation, a quiz and a glossary",
+      "tag": "guide / Buddhism",
+      "categories": [
+        "Cogita",
+        "Misc"
+      ],
+      "state": 11
     }
   ]
 }
