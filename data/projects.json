@@ -639,6 +639,19 @@
         "Misc"
       ],
       "state": 11
+    },
+    {
+      "id": "osx-minimalistats",
+      "title": "OSX Minimalistats",
+      "url": "https://github.com/kai-denrei/OSX-minimalistats",
+      "img": "screenshots/osx-minimalistats.webp",
+      "alt": "OSX Minimalistats",
+      "desc": "A trimmed fork of exelban/stats — a minimal, label-free macOS menu-bar monitor for CPU, RAM and disk, threshold-coloured. Toned an 88MB repo down to 7.8MB to show just the basic stats up on the menu bar",
+      "tag": "repo / macOS menu-bar",
+      "categories": [
+        "Tools"
+      ],
+      "state": 32
     }
   ]
 }
