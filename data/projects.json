@@ -652,6 +652,20 @@
         "Tools"
       ],
       "state": 32
+    },
+    {
+      "id": "hokankoushi",
+      "title": "Neural Sheet",
+      "url": "https://kai-denrei.github.io/hokankoushi/",
+      "img": "screenshots/hokankoushi.webp",
+      "alt": "Neural Sheet",
+      "desc": "A flat lattice folds onto nine 3-D shapes like a self-organizing map discovering the structure of data — sparks of activation roam a shrinking neighborhood, scientific colormaps ramp the nodes — with zero actual learning. Pure parametric interpolation, vanilla Three.js, live-tunable",
+      "tag": "animation / Three.js",
+      "categories": [
+        "Visual Effects",
+        "Cogita"
+      ],
+      "state": 18
     }
   ]
 }
