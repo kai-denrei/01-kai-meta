@@ -679,6 +679,21 @@
         "Misc"
       ],
       "state": 65
+    },
+    {
+      "id": "shrinking-future",
+      "title": "The Future Shrinks",
+      "url": "https://kai-denrei.github.io/shrinking-future/",
+      "img": "screenshots/shrinking-future.webp",
+      "alt": "The Future Shrinks",
+      "desc": "Why the tap is never the mistake — a BJJ scramble told as a shrinking tree of futures. A scrollytelling essay plus a live dashboard where the decision tree collapses in real time: dots flow through the possible futures, the taken line flares, and the roads not taken burst and fade.",
+      "tag": "visualization / martial arts",
+      "categories": [
+        "Visual Effects",
+        "Martial Arts",
+        "Misc"
+      ],
+      "state": 18
     }
   ]
 }
