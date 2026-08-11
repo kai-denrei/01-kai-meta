@@ -694,6 +694,20 @@
         "Misc"
       ],
       "state": 18
+    },
+    {
+      "id": "primitive-symmetry",
+      "title": "Primitive Symmetry",
+      "url": "https://kai-denrei.github.io/primitive-symmetry/",
+      "img": "screenshots/primitive-symmetry.webp",
+      "alt": "Primitive Symmetry",
+      "desc": "One asymmetric primitive reused through symmetry-group operators — wallpaper tilings with Wang-tile and Truchet coherence, N-fold rosette glyphs, ARAP morphs and 3-D sphere/torus/mesh surfaces, all driven by OKLCH palettes with typeset group-theory tabs",
+      "tag": "visualization / symmetry",
+      "categories": [
+        "Misc",
+        "Visual Effects"
+      ],
+      "state": 25
     }
   ]
 }
