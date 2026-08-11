@@ -666,6 +666,19 @@
         "Cogita"
       ],
       "state": 18
+    },
+    {
+      "id": "function-of-love",
+      "title": "ƒ(Love)",
+      "url": "https://kai-denrei.github.io/FunctionOfLove/",
+      "img": "screenshots/function-of-love.webp",
+      "alt": "ƒ(Love) — the map of love",
+      "desc": "A non-normalized \"map of love\": eight fixed category homes whose components light up independently by intensity — spiritual and physical can both max at once. Archetype presets (young lovers, motherly, octogenarian, brotherly…) plus an editable blank \"My Love\" you fill by pressing a cell and dragging up. Vanilla, offline PWA",
+      "tag": "PWA / visualization",
+      "categories": [
+        "Misc"
+      ],
+      "state": 65
     }
   ]
 }
