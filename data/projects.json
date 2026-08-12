@@ -708,6 +708,20 @@
         "Visual Effects"
       ],
       "state": 25
+    },
+    {
+      "id": "hokorobi-tawaa",
+      "title": "HokorobiTawaa",
+      "url": "https://kai-denrei.github.io/HokorobiTawaa/",
+      "img": "screenshots/hokorobi-tawaa.webp",
+      "alt": "HokorobiTawaa",
+      "desc": "Mobile-first tower defense on a procedurally generated Stalberg board — place towers on a monochrome Three.js wireframe field, installable offline PWA",
+      "tag": "PWA / tower defense",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 14
     }
   ]
 }
