@@ -722,6 +722,20 @@
         "Visual Effects"
       ],
       "state": 14
+    },
+    {
+      "id": "spherical-stalberg-grid",
+      "title": "Spherical Stålberg Grid",
+      "url": "https://kai-denrei.github.io/spherical-stalberg-grid/",
+      "img": "screenshots/spherical-stalberg-grid.webp",
+      "alt": "Spherical Stålberg Grid",
+      "desc": "Oskar Stålberg-style irregular quad grid relaxed onto a sphere — blue-noise sampling, live relaxation loop, defect markers, grid/maze/organic modes",
+      "tag": "PoC",
+      "categories": [
+        "UX",
+        "Gaming"
+      ],
+      "state": 21
     }
   ]
 }
