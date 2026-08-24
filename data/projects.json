@@ -736,6 +736,21 @@
         "Gaming"
       ],
       "state": 21
+    },
+    {
+      "id": "kai-sound-lab",
+      "title": "Kai Sound Lab",
+      "url": "https://kai-denrei.github.io/kai-sound-lab/",
+      "img": "screenshots/kai-sound-lab.webp",
+      "alt": "Kai Sound Lab",
+      "desc": "Synthesized game & UI sound recipes — 27 presets across 5 families, seedable variation, WAV export; nothing recorded, everything reproducible",
+      "tag": "sound design / synthesis",
+      "categories": [
+        "Gaming",
+        "UX",
+        "Tools"
+      ],
+      "state": 18
     }
   ]
 }
