@@ -751,6 +751,49 @@
         "Tools"
       ],
       "state": 18
+    },
+    {
+      "id": "spherical-stalberg-td",
+      "title": "Spherical Stålberg TD",
+      "url": "https://kai-denrei.github.io/spherical-stalberg-grid/#td",
+      "img": "screenshots/spherical-stalberg-grid-td.webp",
+      "alt": "Spherical Stålberg TD",
+      "desc": "Tower Defense game with Macro and Micro PoV elements, retro minigames. Protect the Heart!",
+      "tag": "tower defense",
+      "categories": [
+        "Gaming",
+        "UX"
+      ],
+      "state": 23
+    },
+    {
+      "id": "hacking-mini-games",
+      "title": "Hacking Mini-Games",
+      "url": "https://kai-denrei.github.io/hacking-mini-games/",
+      "img": "screenshots/hacking-mini-games.webp",
+      "alt": "Hacking Mini-Games",
+      "desc": "Dotted-halftone intrusion puzzles — retro mini-games: orbit a scatter into a glyph, outrun your own tracer, claim registers on a dead circuit",
+      "tag": "retro mini-games",
+      "categories": [
+        "Gaming",
+        "UX"
+      ],
+      "state": 21
+    },
+    {
+      "id": "blueprint-to-life",
+      "title": "Blueprint to Life",
+      "url": "https://kai-denrei.github.io/blueprint-to-life/",
+      "img": "screenshots/blueprint-to-life.webp",
+      "alt": "Blueprint to Life",
+      "desc": "Procedural 3D asset creator — scene graphs built from primitives with no imported meshes, blueprint and PBR views, GLB export",
+      "tag": "3D asset creator / GLB",
+      "categories": [
+        "Gaming",
+        "Tools",
+        "Visual Effects"
+      ],
+      "state": 22
     }
   ]
 }
