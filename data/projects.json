@@ -794,6 +794,21 @@
         "Visual Effects"
       ],
       "state": 22
+    },
+    {
+      "id": "procedural3dvisuals",
+      "title": "Procedural 3D Visuals",
+      "url": "https://kai-denrei.github.io/procedural3dvisuals/",
+      "img": "screenshots/procedural3dvisuals.webp",
+      "alt": "Procedural 3D Visuals",
+      "desc": "XorDev-style GLSL shader sandbox — raymarched corona, wormhole portal, iridescent foil and melting jelly, each with live parameter dials, deeplinks and a dependency-free standalone export",
+      "tag": "shader sandbox / GLSL",
+      "categories": [
+        "UX",
+        "Visual Effects",
+        "Misc"
+      ],
+      "state": 9
     }
   ]
 }
