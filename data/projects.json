@@ -11,6 +11,21 @@
   ],
   "projects": [
     {
+      "id": "onkochishin",
+      "title": "Onkochishin",
+      "url": "https://kai-denrei.github.io/onkochishin/",
+      "img": "screenshots/onkochishin.webp",
+      "alt": "Onkochishin",
+      "desc": "Studies other people's web demos, then rebuilds them as dependency-free single pages. 16 rebuilt works, 14 shader labs with 127 live controls, presets and permalinks, plus the tooling that lifts and patches them",
+      "tag": "gallery / UX library",
+      "categories": [
+        "UX",
+        "Visual Effects",
+        "Tools"
+      ],
+      "state": 21
+    },
+    {
       "id": "8-bit-elements",
       "title": "8-Bit Elements",
       "url": "https://kai-denrei.github.io/8-bit-elements/",
