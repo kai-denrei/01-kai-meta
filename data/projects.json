@@ -838,6 +838,280 @@
         "Tools"
       ],
       "state": 7
+    },
+    {
+      "id": "stalheart",
+      "title": "Stalheart",
+      "url": "https://kai-denrei.github.io/stalheart/",
+      "img": "screenshots/stalheart.webp",
+      "alt": "Stalheart",
+      "desc": "Drive the tank, defend the heart, hunt the gates — action tower defense on an irregular spherical Stålberg planet, with a weapon and effect workshop",
+      "tag": "game / spherical TD",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 7
+    },
+    {
+      "id": "karyoku",
+      "title": "karyoku",
+      "url": "https://kai-denrei.github.io/karyoku/",
+      "img": "screenshots/karyoku.webp",
+      "alt": "karyoku",
+      "desc": "Firepower (Amiga) homage — seeded procedural military bases with walls, gates, roads and sentry arcs, set in organic Stålberg terrain",
+      "tag": "procedural / three.js",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 7
+    },
+    {
+      "id": "ttd",
+      "title": "TTD — Tank Tower Defense",
+      "url": "https://kai-denrei.github.io/TTD/",
+      "img": "screenshots/ttd.webp",
+      "alt": "TTD — Tank Tower Defense",
+      "desc": "Passive tower-defense macro strategy layered with tactical tank combat and story-driven retro minigames",
+      "tag": "game / TD + tanks",
+      "categories": [
+        "Gaming"
+      ],
+      "state": 7
+    },
+    {
+      "id": "creator-economy",
+      "title": "The Attention Ledger",
+      "url": "https://kai-denrei.github.io/creator-economy/",
+      "img": "screenshots/creator-economy.webp",
+      "alt": "The Attention Ledger",
+      "desc": "Evidence-based explainer on creator economics in 2026 — income-to-attention solver, blended RPM, power-law reality checks. Views are not a universal unit",
+      "tag": "explainer / economics",
+      "categories": [
+        "Cogita",
+        "Tools"
+      ],
+      "state": 7
+    },
+    {
+      "id": "bjj-jikohyouka",
+      "title": "BJJ Skill-Check",
+      "url": "https://kai-denrei.github.io/bjj-jikohyouka/",
+      "img": "screenshots/bjj-jikohyouka.webp",
+      "alt": "BJJ Skill-Check",
+      "desc": "One-tap BJJ self-assessment across ability axes, read against overlapping belt curves — standalone v0.2 of the grapplingprimitives skill-check",
+      "tag": "PWA / self-assessment",
+      "categories": [
+        "Martial Arts",
+        "Tools"
+      ],
+      "state": 7
+    },
+    {
+      "id": "tu-quoque",
+      "title": "Tu Quoque",
+      "url": "https://tu-quoque.pages.dev/",
+      "img": "screenshots/tu-quoque.webp",
+      "alt": "Tu Quoque",
+      "desc": "Educational atlas that refuses the single lens — 165 countries, each shown both on the receiving hand and the dishing hand of history, plus a geography quiz",
+      "tag": "atlas / history",
+      "categories": [
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "ideogram4-scene-graph",
+      "title": "Ideogram 4 — A Prompt Is a Scene Graph",
+      "url": "https://kai-denrei.github.io/ideogram4-scene-graph/",
+      "img": "screenshots/ideogram4-scene-graph.webp",
+      "alt": "Ideogram 4 — A Prompt Is a Scene Graph",
+      "desc": "How Ideogram 4 reads JSON captions as typed scene graphs — bbox layout, literal text and colour-palette conditioning, versus keyword prompting",
+      "tag": "explainer / image models",
+      "categories": [
+        "Cogita",
+        "Tools"
+      ],
+      "state": 7
+    },
+    {
+      "id": "rvina-liminalis",
+      "title": "SEED — Rvina Liminalis",
+      "url": "https://kai-denrei.github.io/rvina-liminalis/",
+      "img": "screenshots/rvina-liminalis.webp",
+      "alt": "SEED — Rvina Liminalis",
+      "desc": "A game that ages as you play it — amber CRT, three games and an exit that isn't one. Arrow keys and space, everywhere, always",
+      "tag": "game / meta",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 7
+    },
+    {
+      "id": "flow-state-audited",
+      "title": "Flow State, Audited",
+      "url": "https://kai-denrei.github.io/flow-state-audited/",
+      "img": "screenshots/flow-state-audited.webp",
+      "alt": "Flow State, Audited",
+      "desc": "Evidence audit of \"flow state\" — sceptic and advocate both steel-manned. Real experience, solid correlation, weak evidence that it causes expertise",
+      "tag": "essay / evidence audit",
+      "categories": [
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "game-design-lessons",
+      "title": "Lessons of the Game Makers",
+      "url": "https://kai-denrei.github.io/game-design-lessons/",
+      "img": "screenshots/game-design-lessons.webp",
+      "alt": "Lessons of the Game Makers",
+      "desc": "Dark editorial reader of the canonical lesson lists from Rosewater, Meier, Koster, Johnson, Schell and The 400 Project, with a synthesis tab",
+      "tag": "reader / game design",
+      "categories": [
+        "Gaming",
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "targeting-grid",
+      "title": "的 — Targeting Pattern Editor",
+      "url": "https://kai-denrei.github.io/Targeting-grid/",
+      "img": "screenshots/targeting-grid.webp",
+      "alt": "的 — Targeting Pattern Editor",
+      "desc": "Offline PWA for designing 3D targeting and stance patterns for the 的 card system — glass-cube grid editor with transparent PNG export",
+      "tag": "PWA / card design tool",
+      "categories": [
+        "Tools",
+        "Gaming"
+      ],
+      "state": 7
+    },
+    {
+      "id": "wetwareviruses",
+      "title": "Low-Level for Wet-ware",
+      "url": "https://kai-denrei.github.io/wetwareviruses/",
+      "img": "screenshots/wetwareviruses.webp",
+      "alt": "Low-Level for Wet-ware",
+      "desc": "Five LLMs answer one provocation — human languages as low-level code for wet-ware — typeset as an arc from embrace to inversion",
+      "tag": "reading / LLM comparison",
+      "categories": [
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "pixel-wall",
+      "title": "The Pixel Floor",
+      "url": "https://kai-denrei.github.io/pixel-wall/",
+      "img": "screenshots/pixel-wall.webp",
+      "alt": "The Pixel Floor",
+      "desc": "Essay on where the human touch survives in AI pixel art, with an interactive animation lab",
+      "tag": "essay / pixel art",
+      "categories": [
+        "Visual Effects",
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "procedural-chip-texture",
+      "title": "Procedural Chip Texture",
+      "url": "https://kai-denrei.github.io/procedural-chip-texture/",
+      "img": "screenshots/procedural-chip-texture.webp",
+      "alt": "Procedural Chip Texture",
+      "desc": "Deterministic IC die and motherboard imagery grown from a seed — mobile-first PWA",
+      "tag": "procedural / texture",
+      "categories": [
+        "Visual Effects",
+        "Tools"
+      ],
+      "state": 7
+    },
+    {
+      "id": "catapult-games",
+      "title": "CATAPULT",
+      "url": "https://kai-denrei.github.io/catapult-games/",
+      "img": "screenshots/catapult-games.webp",
+      "alt": "CATAPULT",
+      "desc": "Homage to the artillery game lineage, 1972 → 2009 — five playable era-pieces on one page",
+      "tag": "game / homage",
+      "categories": [
+        "Gaming"
+      ],
+      "state": 7
+    },
+    {
+      "id": "stb-brumachlys",
+      "title": "Brumachlys (PoC)",
+      "url": "https://kai-denrei.github.io/STB_Brumachlys/",
+      "img": "screenshots/stb-brumachlys.webp",
+      "alt": "Brumachlys (PoC)",
+      "desc": "The original simultaneous-turn hex wargame prototype in the Weewar / Zetawar lineage — hot-seat, deterministic, offline PWA",
+      "tag": "game / hex wargame",
+      "categories": [
+        "Gaming"
+      ],
+      "state": 7
+    },
+    {
+      "id": "inochi-no-mizu",
+      "title": "inochi no mizu",
+      "url": "https://kai-denrei.github.io/inochi-no-mizu/",
+      "img": "screenshots/inochi-no-mizu.webp",
+      "alt": "inochi no mizu",
+      "desc": "Cave-rain prototype — steer falling water as a centroid-driven metaball through the kami-no-ame cave",
+      "tag": "game / PoC",
+      "categories": [
+        "Gaming",
+        "Visual Effects"
+      ],
+      "state": 7
+    },
+    {
+      "id": "gh-japanese-martial-arts",
+      "title": "Japanese Martial Arts — Grappling History",
+      "url": "https://kai-denrei.github.io/gh-japanese-martial-arts/",
+      "img": "screenshots/gh-japanese-martial-arts.webp",
+      "alt": "Japanese Martial Arts — Grappling History",
+      "desc": "Japanese grappling history told through primary sources",
+      "tag": "history / martial arts",
+      "categories": [
+        "Martial Arts",
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "fiore-delli-liberi",
+      "title": "Fior di Battaglia",
+      "url": "https://kai-denrei.github.io/fiore-delli-liberi/GrapplingHistory/fiore/",
+      "img": "screenshots/fiore-delli-liberi.webp",
+      "alt": "Fior di Battaglia",
+      "desc": "Interactive reader for Fiore dei Liberi's c. 1410 manuscript (Getty MS Ludwig XV 13) — multi-source translations and a lexicon",
+      "tag": "manuscript reader / history",
+      "categories": [
+        "Martial Arts",
+        "Cogita"
+      ],
+      "state": 7
+    },
+    {
+      "id": "gh-ancient-greece",
+      "title": "Ancient Greek Grappling",
+      "url": "https://kai-denrei.github.io/gh-ancient-greece/",
+      "img": "screenshots/gh-ancient-greece.webp",
+      "alt": "Ancient Greek Grappling",
+      "desc": "Palē and pankration explored through primary sources",
+      "tag": "history / martial arts",
+      "categories": [
+        "Martial Arts",
+        "Cogita"
+      ],
+      "state": 7
     }
   ]
 }
