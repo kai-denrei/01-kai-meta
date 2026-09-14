@@ -824,6 +824,20 @@
         "Misc"
       ],
       "state": 9
+    },
+    {
+      "id": "lab-satisfying-lasers",
+      "title": "Satisfying Lasers",
+      "url": "https://kai-denrei.github.io/lab-satisfying-lasers/",
+      "img": "screenshots/lab-satisfying-lasers.webp",
+      "alt": "Satisfying Lasers",
+      "desc": "Laser and beam FX lab — texture-free ribbon shader with glow, core, caps and fbm noise, burst firing, five techniques side by side, and exports that carry the method: params JSON, drop-in three.js module and a written recipe",
+      "tag": "beam FX / three.js",
+      "categories": [
+        "Visual Effects",
+        "Tools"
+      ],
+      "state": 7
     }
   ]
 }
