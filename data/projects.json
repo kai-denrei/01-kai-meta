@@ -11,6 +11,36 @@
   ],
   "projects": [
     {
+      "id": "lab-creatures",
+      "title": "Creature Lab",
+      "url": "https://kai-denrei.github.io/lab-creatures/",
+      "img": "screenshots/lab-creatures.webp",
+      "alt": "Creature Lab collection with membrane and arthropod specimens",
+      "desc": "An interactive collection of unfamiliar life — explore creature bodies, tune locomotion and study soft-body behavior",
+      "tag": "simulation / creature design",
+      "categories": [
+        "Gaming",
+        "Visual Effects",
+        "Misc"
+      ],
+      "state": 21,
+      "completion": 60
+    },
+    {
+      "id": "escalet",
+      "title": "Escalet",
+      "url": "https://kai-denrei.github.io/escalet/",
+      "img": "screenshots/escalet.webp",
+      "alt": "Escalet coastal landscape overlooking the Mediterranean cove",
+      "desc": "Explore a 3D study of Plage de l’Escalet — four coastal viewpoints, adjustable light and sea conditions, plus walking, swimming and free flight",
+      "tag": "landscape / simulation",
+      "categories": [
+        "Visual Effects",
+        "Misc"
+      ],
+      "state": 0
+    },
+    {
       "id": "onkochishin",
       "title": "Onkochishin",
       "url": "https://kai-denrei.github.io/onkochishin/",

@@ -532,6 +532,10 @@
     const bs = n - 1, q = Math.floor(bs / 9), inb = bs % 9;
     return inb < 8 ? q * 25 + (inb + 1) * 3 : (q + 1) * 25;
   }
+  // Optional exact percentage; the braille bar retains its discrete fill state.
+  function percentForProject(p) {
+    return Number.isFinite(p.completion) ? Math.max(0, Math.min(100, p.completion)) : percentForState(p.state);
+  }
   function renderBar(n) {
     const s = stateAt(n);
     return s.glyphs.map((g, i) => '<span style="color:' + PALETTE[s.colors[i]] + '">' + g + '</span>').join('');
@@ -626,7 +630,7 @@
   const saveOv = (o) => localStorage.setItem(LS_KEY, JSON.stringify(o));
   function persist(id) {
     const p = byId(id), ov = loadOv();
-    ov[id] = { state: p.state, categories: p.categories };
+    ov[id] = { state: p.state, categories: p.categories, completion: p.completion };
     saveOv(ov);
     document.getElementById('export-btn').classList.add('dirty');
     scheduleSave();
@@ -653,7 +657,7 @@
   }
 
   function cardHTML(p) {
-    const pct = percentForState(p.state);
+    const pct = percentForProject(p);
     const catsPublic = p.categories.length
       ? '<div class="cats">' + p.categories.map(c => '<span class="cat-chip">' + esc(c) + '</span>').join('') + '</div>'
       : '';
@@ -691,7 +695,7 @@
     const card = document.querySelector('.card[data-id="' + (window.CSS && CSS.escape ? CSS.escape(id) : id) + '"]');
     if (!card) return;
     card.querySelector('.braille-bar').innerHTML = renderBar(p.state);
-    card.querySelector('.completion .pct').textContent = percentForState(p.state) + '%';
+    card.querySelector('.completion .pct').textContent = percentForProject(p) + '%';
   }
 
   // ---- Filters ----
@@ -718,7 +722,7 @@
   function applyFilters() {
     let shown = 0;
     document.querySelectorAll('#grid .card').forEach(card => {
-      const p = byId(card.dataset.id), pct = percentForState(p.state);
+      const p = byId(card.dataset.id), pct = percentForProject(p);
       const okCat = !fCat || p.categories.includes(fCat);
       const okThr = pct >= fThr;
       const hay = (p.title + ' ' + p.desc + ' ' + p.tag + ' ' + p.categories.join(' ')).toLowerCase();
@@ -736,7 +740,7 @@
     const carousel = document.getElementById('carousel');
     const hint = document.getElementById('carousel-hint');
     // Feature every project above 75% completion (shuffled order each load).
-    const pool = projects.filter(p => percentForState(p.state) > 75).sort((a, b) => b.state - a.state);
+    const pool = projects.filter(p => percentForProject(p) > 75).sort((a, b) => b.state - a.state);
     if (pool.length === 0) { carousel.hidden = true; hint.hidden = false; return; }
     hint.hidden = true; carousel.hidden = false;
     const feat = shuffle(pool);
@@ -752,7 +756,7 @@
             '</div>' +
             '<div class="slide-bottom">' +
               '<span class="braille-bar">' + renderBar(p.state) + '</span>' +
-              '<span class="slide-pct">' + percentForState(p.state) + '%</span>' +
+              '<span class="slide-pct">' + percentForProject(p) + '%</span>' +
             '</div>' +
           '</div>' +
         '</a>' +
@@ -815,7 +819,7 @@
       const p = byId(id);
       const next = Math.max(0, Math.min(MAX_STATE, p.state + dir));
       if (next === p.state) return false;          // already at a bound
-      p.state = next; persist(id); updateCard(id);
+      p.state = next; p.completion = null; persist(id); updateCard(id);
       return true;
     }
     function startHold(bar, clientX) {
@@ -870,7 +874,7 @@
       categories: CATEGORIES,
       projects: projects.map(p => ({
         id: p.id, title: p.title, url: p.url, repo: p.repo, img: p.img, alt: p.alt,
-        desc: p.desc, tag: p.tag, categories: p.categories, state: p.state
+        desc: p.desc, tag: p.tag, categories: p.categories, state: p.state, completion: p.completion
       }))
     };
   }
@@ -1008,6 +1012,8 @@
       return Object.assign({}, p, {
         alt: p.alt || p.title,
         state: typeof o.state === 'number' ? o.state : (p.state || 0),
+        completion: Object.prototype.hasOwnProperty.call(o, 'completion') ? o.completion
+          : (typeof o.state === 'number' && o.state !== p.state ? null : p.completion),
         categories: Array.isArray(o.categories) ? o.categories : (p.categories || [])
       });
     });
